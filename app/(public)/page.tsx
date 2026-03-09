@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-4 px-10">
-      <div className="absolute top-90 flex flex-wrap justify-center items-center gap-1">
+      <div className="absolute top-90 flex flex-col justify-center items-center gap-1">
         {claws.map((id) => (
           <div key={id} className="fade-out-animation text-2xl font-bold">
             *claw*
