@@ -26,7 +26,7 @@ export default function Home() {
       </div>
 
       <h1 className="text-4xl font-bold">Hubclaw</h1>
-      <p className="text-2xl">AI Agents That Actually Get Things Done</p>
+      <p className="text-2xl text-center">AI Agents That Actually Get Things Done</p>
       <button
         onClick={handleClick}
         className="cursor-pointer rounded-xl bg-red-500 p-2 text-white transition-transform transform active:scale-110"
