@@ -25,7 +25,7 @@ function AuthTelegramInner() {
       last_name: searchParams.get("last_name"),
       username: searchParams.get("username"),
       photo_url: searchParams.get("photo_url"),
-      auth_date:   searchParams.get("auth_date"),
+      auth_date: searchParams.get("auth_date"),
       hash: searchParams.get("hash"),
     };
 

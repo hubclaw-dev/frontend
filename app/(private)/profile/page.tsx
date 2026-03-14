@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function ProfilePage() {
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
-  
+
   // TODO: create separated function for date formating
   const authDateFormatted = user?.auth_date
     ? new Date(Number(user.auth_date) * 1000).toLocaleString("en-EN", {
@@ -24,7 +24,7 @@ export default function ProfilePage() {
 
       {/* User info */}
       {user ? (
-        <div className="flex flex-col items-center gap-3 w-full max-w-md">
+        <div className="flex w-full max-w-md flex-col items-center gap-3">
           {user.photo_url && (
             <Image
               src={user.photo_url}
@@ -44,8 +44,8 @@ export default function ProfilePage() {
             <p className="text-muted-foreground text-sm">ID: {user.id}</p>
           </div>
 
-          <div className="mt-4 w-full rounded-lg border bg-card p-4 text-left text-sm">
-            <h3 className="mb-2 font-semibold text-muted-foreground">
+          <div className="bg-card mt-4 w-full rounded-lg border p-4 text-left text-sm">
+            <h3 className="text-muted-foreground mb-2 font-semibold">
               Telegram Auth Data
             </h3>
             <div className="grid grid-cols-[auto,1fr] gap-x-4 gap-y-1.5">
@@ -53,7 +53,7 @@ export default function ProfilePage() {
               <span>{authDateFormatted || "—"}</span>
 
               <span className="text-muted-foreground">Hash:</span>
-              <span className="break-all font-mono text-xs text-muted-foreground/80">
+              <span className="text-muted-foreground/80 font-mono text-xs break-all">
                 {user.hash || "—"}
               </span>
             </div>

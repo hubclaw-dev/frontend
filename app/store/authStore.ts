@@ -39,7 +39,6 @@ export const useAuthStore = create<AuthState>()(
           isLoggedIn: false,
           isHydrated: true,
         }),
-
     }),
     {
       name: "auth-storage",
@@ -57,7 +56,7 @@ export const useAuthStore = create<AuthState>()(
             state.isHydrated = true;
           }
         };
-      }
+      },
     },
   ),
 );

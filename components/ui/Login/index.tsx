@@ -7,14 +7,14 @@ import { useEffect, useRef, useState } from "react";
 export default function Login() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLoader, setShowLoader] = useState(true);
-  const {isLoggedIn, isHydrated} = useAuthStore()
-  const [showButton, setShowButton] = useState(true)
+  const { isLoggedIn, isHydrated } = useAuthStore();
+  const [showButton, setShowButton] = useState(true);
 
   useEffect(() => {
     if (!isHydrated) return;
 
     if (isLoggedIn) {
-      setShowButton(false)
+      setShowButton(false);
     }
 
     const script = document.createElement("script");

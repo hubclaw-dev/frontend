@@ -6,11 +6,10 @@ import { useEffect } from "react";
 import Loading from "@/components/ui/Loading";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const {isLoggedIn, isHydrated} = useAuthStore();
+  const { isLoggedIn, isHydrated } = useAuthStore();
   const router = useRouter();
 
   useEffect(() => {
-
     if (!isHydrated) {
       return;
     }
@@ -21,9 +20,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   }, [isHydrated, isLoggedIn, router]);
 
   if (!isHydrated) {
-    return (
-      <Loading />
-    );
+    return <Loading />;
   }
 
   if (!isLoggedIn) {
