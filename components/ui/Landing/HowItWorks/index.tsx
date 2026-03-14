@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function HowItWorks() {
   const steps = [
@@ -17,32 +17,33 @@ export default function HowItWorks() {
       description:
         "Your first message sets everything in motion. Tell it what you're working on, what you want tracked, what you hate dealing with. It listens. Then it starts.",
     },
-  ]
+  ];
 
   return (
-    <section className="w-full px-6 py-28 bg-surface">
-      <div className="mx-auto max-w-5xl flex flex-col items-center gap-12 text-center">
-        
+    <section className="bg-surface w-full px-6 py-28">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-12 text-center">
         {/* Headline */}
-        <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+        <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
           Three steps. Then it's just — working.
         </h2>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-6 w-full mt-8">
+        <div className="mt-8 grid w-full gap-6 md:grid-cols-3">
           {steps.map((step, idx) => (
-            <Card key={idx} className="text-left border hover:shadow-lg transition-shadow">
+            <Card
+              key={idx}
+              className="border text-left transition-shadow hover:shadow-lg"
+            >
               <CardHeader>
                 <CardTitle className="text-lg md:text-xl">{`Step ${idx + 1} - ${step.title}`}</CardTitle>
               </CardHeader>
-              <CardContent className="text-sm text-muted-foreground leading-relaxed">
+              <CardContent className="text-muted-foreground text-sm leading-relaxed">
                 {step.description}
               </CardContent>
             </Card>
           ))}
         </div>
-
       </div>
     </section>
-  )
+  );
 }

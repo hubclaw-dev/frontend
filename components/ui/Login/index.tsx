@@ -1,53 +1,52 @@
-"use client"
+"use client";
 
-import { API_PROD } from "@/app/consts"
-import { useEffect, useRef, useState } from "react"
+import { API_PROD } from "@/app/consts";
+import { useEffect, useRef, useState } from "react";
 
 export default function Login() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [showLoader, setShowLoader] = useState(true)
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
-    const script = document.createElement("script")
-    script.src = "https://telegram.org/js/telegram-widget.js?23"
-    script.setAttribute("data-telegram-login", "testhubcc_bot")
-    script.setAttribute("data-size", "large")
-    script.setAttribute(
-      "data-auth-url",
-      API_PROD
-    )
-    script.setAttribute("data-request-access", "write")
-    script.async = true
+    const script = document.createElement("script");
+    script.src = "https://telegram.org/js/telegram-widget.js?23";
+    script.setAttribute("data-telegram-login", "testhubcc_bot");
+    script.setAttribute("data-size", "large");
+    script.setAttribute("data-auth-url", API_PROD);
+    script.setAttribute("data-request-access", "write");
+    script.async = true;
 
     if (containerRef.current) {
-      containerRef.current.appendChild(script)
-      setShowLoader(false)
+      containerRef.current.appendChild(script);
+      setShowLoader(false);
     }
 
     return () => {
       if (containerRef.current) {
-        containerRef.current.innerHTML = ""
+        containerRef.current.innerHTML = "";
       }
-      document.querySelectorAll('iframe[src*="telegram.org"], .tgme_widget').forEach(el => el.remove())
-    }
-  }, [showLoader])
+      document
+        .querySelectorAll('iframe[src*="telegram.org"], .tgme_widget')
+        .forEach((el) => el.remove());
+    };
+  }, [showLoader]);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-surface">
-      
+    <div className="bg-surface flex min-h-screen flex-col items-center justify-center px-6">
       {/* Headline */}
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-4">
+      <h1 className="mb-4 text-center text-4xl font-bold md:text-5xl">
         Welcome Back
       </h1>
 
       {/* Subheadline */}
-      <p className="text-lg md:text-xl text-muted-foreground text-center mb-8 max-w-md">
-        Sign in to your HubClaw account and start managing your AI agents instantly.
+      <p className="text-muted-foreground mb-8 max-w-md text-center text-lg md:text-xl">
+        Sign in to your HubClaw account and start managing your AI agents
+        instantly.
       </p>
 
       {/* Контейнер для кнопки */}
       {showLoader && <div>loading..</div>}
       <div ref={containerRef}></div>
     </div>
-  )
+  );
 }

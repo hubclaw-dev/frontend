@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { useAuthStore } from "@/app/store/authStore"
-import { Button } from "@/components/ui/button"
-import { Spinner } from "@/components/ui/spinner"
-import Image from "next/image"
+import { useAuthStore } from "@/app/store/authStore";
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
+import Image from "next/image";
 
 export default function ProfilePage() {
-  const user = useAuthStore((state) => state.user)
-  const logout = useAuthStore((state) => state.logout)
+  const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state) => state.logout);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-6 bg-surface text-center gap-6">
+    <div className="bg-surface flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
       {/* Headline */}
       <h1 className="text-4xl font-bold">Profile</h1>
 
@@ -27,14 +27,16 @@ export default function ProfilePage() {
               unoptimized
             />
           )}
-          <p className="text-lg font-medium">{user.first_name} {user.last_name}</p>
-          <p className="text-sm text-muted-foreground">@{user.username}</p>
-          <p className="text-sm text-muted-foreground">ID: {user.id}</p>
+          <p className="text-lg font-medium">
+            {user.first_name} {user.last_name}
+          </p>
+          <p className="text-muted-foreground text-sm">@{user.username}</p>
+          <p className="text-muted-foreground text-sm">ID: {user.id}</p>
         </div>
       ) : (
         <>
           <p className="text-muted-foreground">Login required.</p>
-          <Spinner className="w-12 h-12 text-primary" />
+          <Spinner className="text-primary h-12 w-12" />
         </>
       )}
 
@@ -50,5 +52,5 @@ export default function ProfilePage() {
         </Button>
       )}
     </div>
-  )
+  );
 }

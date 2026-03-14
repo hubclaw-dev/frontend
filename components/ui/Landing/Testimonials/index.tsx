@@ -1,4 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardFooter,
+} from "@/components/ui/card";
 
 export default function TestimonialsSection() {
   const testimonials = [
@@ -17,25 +23,29 @@ export default function TestimonialsSection() {
         "It made a trade while I was at dinner. Based on signals I set up in five minutes. I checked my phone and it was just - done.",
       author: "Retail investor, Berlin",
     },
-  ]
+  ];
 
   return (
-    <section className="w-full px-6 py-28 bg-surface">
-      <div className="mx-auto max-w-5xl flex flex-col items-center gap-12 text-center">
-        
+    <section className="bg-surface w-full px-6 py-28">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-12 text-center">
         {/* Headline */}
-        <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+        <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
           People who stopped doing things themselves.
         </h2>
 
         {/* Testimonials */}
-        <div className="grid md:grid-cols-3 gap-6 w-full mt-12">
+        <div className="mt-12 grid w-full gap-6 md:grid-cols-3">
           {testimonials.map((t, idx) => (
-            <Card key={idx} className="flex flex-col justify-between p-6 hover:shadow-lg transition-shadow">
+            <Card
+              key={idx}
+              className="flex flex-col justify-between p-6 transition-shadow hover:shadow-lg"
+            >
               <CardHeader>
-                <CardTitle className="text-lg md:text-xl">&quot;{t.quote}&quot;</CardTitle>
+                <CardTitle className="text-lg md:text-xl">
+                  &quot;{t.quote}&quot;
+                </CardTitle>
               </CardHeader>
-              <CardFooter className="pt-4 text-sm text-muted-foreground">
+              <CardFooter className="text-muted-foreground pt-4 text-sm">
                 {t.author}
               </CardFooter>
             </Card>
@@ -43,5 +53,5 @@ export default function TestimonialsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

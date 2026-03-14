@@ -1,18 +1,13 @@
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card"
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 
-export default function PricingSection(props:{id: string}) {
+export default function PricingSection(props: { id: string }) {
   const plans = [
     {
       title: "STARTER",
@@ -46,7 +41,7 @@ export default function PricingSection(props:{id: string}) {
         "For people who want their agent running everything",
       ],
     },
-  ]
+  ];
 
   const faqs = [
     {
@@ -68,13 +63,13 @@ export default function PricingSection(props:{id: string}) {
       answer:
         "Yes. All plans support BYOK - you stay in control of your model and costs.",
     },
-  ]
+  ];
 
   return (
-    <section id={props.id} className="w-full px-6 py-28 bg-muted">
-      <div className="mx-auto max-w-6xl flex flex-col items-center gap-12 text-center">
+    <section id={props.id} className="bg-muted w-full px-6 py-28">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 text-center">
         {/* Headline */}
-        <h2 className="text-3xl md:text-5xl font-semibold tracking-tight">
+        <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
           Free to start.
           <br />
           <span className="text-foreground/80">
@@ -83,26 +78,30 @@ export default function PricingSection(props:{id: string}) {
         </h2>
 
         {/* Plans */}
-        <div className="grid md:grid-cols-3 gap-6 w-full mt-8">
+        <div className="mt-8 grid w-full gap-6 md:grid-cols-3">
           {plans.map((plan, idx) => (
             <Card
               key={idx}
-              className={`border p-6 flex flex-col justify-between hover:shadow-lg transition-shadow ${
+              className={`flex flex-col justify-between border p-6 transition-shadow hover:shadow-lg ${
                 plan.title.includes("PRO") ? "border-primary" : ""
               }`}
             >
               <CardHeader className="pb-4">
-                <CardTitle className="text-xl font-bold">{plan.title}</CardTitle>
-                <p className="text-2xl font-semibold mt-2">{plan.price}</p>
+                <CardTitle className="text-xl font-bold">
+                  {plan.title}
+                </CardTitle>
+                <p className="mt-2 text-2xl font-semibold">{plan.price}</p>
               </CardHeader>
-              <CardContent className="flex-1 flex flex-col gap-2 text-sm text-muted-foreground">
+              <CardContent className="text-muted-foreground flex flex-1 flex-col gap-2 text-sm">
                 <ul className="flex flex-col gap-1">
                   {plan.features.map((f, i) => (
                     <li key={i}>• {f}</li>
                   ))}
                 </ul>
-                <Button className="cursor-pointer mt-6">Start with a free 3-day trial</Button>
-                <p className="text-xs text-muted-foreground mt-2">
+                <Button className="mt-6 cursor-pointer">
+                  Start with a free 3-day trial
+                </Button>
+                <p className="text-muted-foreground mt-2 text-xs">
                   Cancel anytime. No contracts. Pick up where you left off.
                 </p>
               </CardContent>
@@ -111,11 +110,15 @@ export default function PricingSection(props:{id: string}) {
         </div>
 
         {/* FAQ */}
-        <div className="w-full max-w-2xl mt-16 text-left">
-          <h3 className="text-2xl font-semibold mb-6 text-center">FAQ</h3>
+        <div className="mt-16 w-full max-w-2xl text-left">
+          <h3 className="mb-6 text-center text-2xl font-semibold">FAQ</h3>
           <Accordion type="single" collapsible>
             {faqs.map((faq, idx) => (
-              <AccordionItem key={idx} value={`item-${idx}`} className="border-b">
+              <AccordionItem
+                key={idx}
+                value={`item-${idx}`}
+                className="border-b"
+              >
                 <AccordionTrigger>{faq.question}</AccordionTrigger>
                 <AccordionContent>{faq.answer}</AccordionContent>
               </AccordionItem>
@@ -124,5 +127,5 @@ export default function PricingSection(props:{id: string}) {
         </div>
       </div>
     </section>
-  )
+  );
 }
