@@ -1,11 +1,19 @@
 "use client"
 
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useAuthStore } from "../../../store/authStore"
 import Loading from "@/components/ui/Loading"
 
 export default function AuthTelegramPage() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <AuthTelegramInner />
+    </Suspense>
+  )
+}
+
+function AuthTelegramInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const setUser = useAuthStore((state) => state.setUser)
@@ -32,3 +40,4 @@ export default function AuthTelegramPage() {
     <Loading />
   )
 }
+
