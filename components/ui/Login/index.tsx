@@ -1,15 +1,22 @@
 "use client";
 
 import { API_PROD } from "@/app/consts";
+import { useAuthStore } from "@/app/store/authStore";
 import { useEffect, useRef, useState } from "react";
 
 export default function Login() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLoader, setShowLoader] = useState(true);
-
-  console.log(API_PROD)
+  const {isLoggedIn, isHydrated} = useAuthStore()
+  const [showButton, setShowButton] = useState(true)
 
   useEffect(() => {
+    if (!isHydrated) return;
+
+    if (isLoggedIn) {
+      setShowButton(false)
+    }
+
     const script = document.createElement("script");
     script.src = "https://telegram.org/js/telegram-widget.js?23";
     script.setAttribute("data-telegram-login", "testhubcc_bot");
@@ -31,7 +38,7 @@ export default function Login() {
         .querySelectorAll('iframe[src*="telegram.org"], .tgme_widget')
         .forEach((el) => el.remove());
     };
-  }, [showLoader]);
+  }, [showButton, showLoader, isHydrated, isLoggedIn]);
 
   return (
     <div className="bg-surface flex min-h-screen flex-col items-center justify-center px-6">
@@ -48,7 +55,7 @@ export default function Login() {
 
       {/* Контейнер для кнопки */}
       {showLoader && <div>loading..</div>}
-      <div ref={containerRef}></div>
+      {showButton && <div ref={containerRef}></div>}
     </div>
   );
 }

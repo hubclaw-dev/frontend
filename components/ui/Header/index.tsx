@@ -14,6 +14,11 @@ export default function Header() {
     setOpen(false);
   };
 
+  const handleDashboard = () => {
+    router.push("/profile");
+    setOpen(false)
+  }
+
   const navLinks = [
     { title: "Pricing", section: "pricing" },
     { title: "Benefits", section: "benefits" },
@@ -38,13 +43,16 @@ export default function Header() {
             <button
               key={link.title}
               onClick={() => handleNavClick(link.section)}
-              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              className="cursor-pointer text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             >
               {link.title}
             </button>
           ))}
           <Button onClick={handleLogin} size="sm" className="cursor-pointer">
             Login
+          </Button>
+          <Button onClick={handleDashboard} size="sm" className="cursor-pointer">
+            Dashboard
           </Button>
         </nav>
 
@@ -74,6 +82,9 @@ export default function Header() {
             ))}
             <Button onClick={handleLogin} size="sm" className="mt-2 w-full">
               Login
+            </Button>
+            <Button onClick={handleDashboard} size="sm" className="mt-2 w-full">
+              Dashboard
             </Button>
           </nav>
         </div>
