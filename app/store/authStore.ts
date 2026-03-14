@@ -7,15 +7,16 @@ interface TelegramUser {
   last_name: string | null;
   username: string | null;
   photo_url: string | null;
+  auth_date: string | null;
+  hash: string | null;
 }
 
 interface AuthState {
   user: TelegramUser | null;
   isLoggedIn: boolean;
-  hasHydrated: boolean;
+  isHydrated: boolean;
   setUser: (user: TelegramUser) => void;
   logout: () => void;
-  setHasHydrated: (state: boolean) => void;
 }
 
 export const useAuthStore = create<AuthState>()(
@@ -23,31 +24,40 @@ export const useAuthStore = create<AuthState>()(
     (set) => ({
       user: null,
       isLoggedIn: false,
-      hasHydrated: false,
+      isHydrated: false,
 
       setUser: (user) =>
         set({
           user,
-          isLoggedIn: true,
+          isLoggedIn: !!user?.id,
+          isHydrated: true,
         }),
 
       logout: () =>
         set({
           user: null,
           isLoggedIn: false,
+          isHydrated: true,
         }),
 
-      setHasHydrated: (state) =>
-        set({
-          hasHydrated: state,
-        }),
     }),
     {
       name: "auth-storage",
+      onRehydrateStorage: () => {
+        console.log("starting hydration...");
 
-      onRehydrateStorage: () => (state) => {
-        state?.setHasHydrated(true);
-      },
+        return (state, error) => {
+          if (error) {
+            console.error("hydration fail Zustand:", error);
+            return;
+          }
+
+          if (state) {
+            console.log("hydration is over, state:", state);
+            state.isHydrated = true;
+          }
+        };
+      }
     },
   ),
 );

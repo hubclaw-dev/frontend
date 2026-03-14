@@ -8,6 +8,14 @@ import Image from "next/image";
 export default function ProfilePage() {
   const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
+  
+  // TODO: create separated function for date formating
+  const authDateFormatted = user?.auth_date
+    ? new Date(Number(user.auth_date) * 1000).toLocaleString("en-EN", {
+        dateStyle: "medium",
+        timeStyle: "short",
+      })
+    : null;
 
   return (
     <div className="bg-surface flex min-h-screen flex-col items-center justify-center gap-6 px-6 text-center">
@@ -16,7 +24,7 @@ export default function ProfilePage() {
 
       {/* User info */}
       {user ? (
-        <div className="flex flex-col items-center gap-2">
+        <div className="flex flex-col items-center gap-3 w-full max-w-md">
           {user.photo_url && (
             <Image
               src={user.photo_url}
@@ -27,17 +35,35 @@ export default function ProfilePage() {
               unoptimized
             />
           )}
-          <p className="text-lg font-medium">
-            {user.first_name} {user.last_name}
-          </p>
-          <p className="text-muted-foreground text-sm">@{user.username}</p>
-          <p className="text-muted-foreground text-sm">ID: {user.id}</p>
+
+          <div className="space-y-1">
+            <p className="text-xl font-medium">
+              {user.first_name} {user.last_name}
+            </p>
+            <p className="text-muted-foreground">@{user.username}</p>
+            <p className="text-muted-foreground text-sm">ID: {user.id}</p>
+          </div>
+
+          <div className="mt-4 w-full rounded-lg border bg-card p-4 text-left text-sm">
+            <h3 className="mb-2 font-semibold text-muted-foreground">
+              Telegram Auth Data
+            </h3>
+            <div className="grid grid-cols-[auto,1fr] gap-x-4 gap-y-1.5">
+              <span className="text-muted-foreground">Auth Date:</span>
+              <span>{authDateFormatted || "—"}</span>
+
+              <span className="text-muted-foreground">Hash:</span>
+              <span className="break-all font-mono text-xs text-muted-foreground/80">
+                {user.hash || "—"}
+              </span>
+            </div>
+          </div>
         </div>
       ) : (
-        <>
+        <div className="flex flex-col items-center gap-4">
           <p className="text-muted-foreground">Login required.</p>
           <Spinner className="text-primary h-12 w-12" />
-        </>
+        </div>
       )}
 
       {/* Logout button */}
@@ -45,7 +71,7 @@ export default function ProfilePage() {
         <Button
           variant="destructive"
           size="lg"
-          className="mt-4"
+          className="mt-6"
           onClick={() => logout()}
         >
           Logout
