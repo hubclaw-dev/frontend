@@ -7,6 +7,8 @@ export default function Login() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showLoader, setShowLoader] = useState(true);
 
+  console.log(API_PROD)
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://telegram.org/js/telegram-widget.js?23";
