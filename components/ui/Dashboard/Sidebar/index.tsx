@@ -92,7 +92,7 @@ export function Sidebar({ className, user }: SidebarProps) {
 
         <div className="p-4">{auth_date}</div>
 
-        <div className="p-4">{hash}</div>
+        {/* <div className="p-4">{hash}</div> */}
       </div>
     </>
   );

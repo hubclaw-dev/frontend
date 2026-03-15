@@ -13,7 +13,7 @@ const userInitial = {
   first_name: "Alex",
   last_name: "Peters",
   username: "@alexpeters",
-  photo_url: "",
+  photo_url: null,
   auth_date: "",
   hash: "sdasdadada",
 };
