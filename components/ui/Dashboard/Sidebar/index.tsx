@@ -60,16 +60,25 @@ export function Sidebar({ className, user }: SidebarProps) {
 
       <div className="grid">
         <div className="flex items-center gap-3 border-t border-zinc-800 p-4">
-          {photo_url ? <AvatarImage src={photo_url} /> : null}
-          <Avatar>
-            {" "}
+          <Avatar className="h-10 w-10">
+            {photo_url && (
+              <AvatarImage
+                src={photo_url}
+                alt={first_name || undefined}
+                className="object-cover"
+              />
+            )}
             <AvatarFallback className="bg-zinc-700 text-white">
               A
             </AvatarFallback>
           </Avatar>
 
           <div className="flex-1">
-            <p className="text-sm font-medium">Alex</p>
+            {first_name ? (
+              <p className="text-sm font-medium">{first_name}</p>
+            ) : (
+              <p className="text-sm font-medium">Alex</p>
+            )}
           </div>
           <Button variant="ghost" size="icon">
             <MoreHorizontal className="h-4 w-4" />
