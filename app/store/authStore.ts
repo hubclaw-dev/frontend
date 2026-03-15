@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface TelegramUser {
+export interface TelegramUser {
   id: string | null;
   first_name: string | null;
   last_name: string | null;

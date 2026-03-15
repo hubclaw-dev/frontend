@@ -15,7 +15,7 @@ export default function Header() {
   };
 
   const handleDashboard = () => {
-    router.push("/profile");
+    router.push("/dashboard");
     setOpen(false);
   };
 

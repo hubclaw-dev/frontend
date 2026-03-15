@@ -34,7 +34,7 @@ function AuthTelegramInner() {
     setUser(user);
     console.log(user);
 
-    router.push("/profile");
+    router.push("/dashboard");
   }, [searchParams, router, setUser]);
 
   return <Loading />;
