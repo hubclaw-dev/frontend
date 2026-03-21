@@ -9,22 +9,20 @@ import { Sidebar } from "@/components/ui/Dashboard/Sidebar";
 import { Plus } from "lucide-react";
 
 const userInitial = {
-  id: "1",
-  first_name: "Alex",
-  last_name: "Peters",
-  username: "@alexpeters",
-  photo_url: null,
-  auth_date: "",
-  hash: "sdasdadada",
+  uid: "1",
+  displayName: "Alex",
+  photoURL: null,
+  email: "test@mail.com",
 };
 
 export default function DashboardPage() {
   const userState = useAuthStore((state) => state.user);
-  const user = userState ?? userInitial;
+  // const user = userState ?? userInitial;
+  console.log("userstate :: ", userState);
 
   return (
     <div className="flex min-h-screen bg-zinc-50">
-      <Sidebar user={user} />
+      <Sidebar user={userState} />
 
       <div className="flex-1 lg:ml-64">
         <header className="sticky top-0 z-40 border-b bg-zinc-50 px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6">

@@ -14,16 +14,20 @@ import {
   Menu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { TelegramUser } from "@/app/store/authStore";
+import { User } from "firebase/auth";
 
 interface SidebarProps {
   className?: string;
-  user: TelegramUser;
+  user: User | null;
 }
 
 export function Sidebar({ className, user }: SidebarProps) {
-  const { id, first_name, last_name, username, photo_url, auth_date, hash } =
-    user;
+  const {
+    uid = "",
+    displayName = null,
+    email = null,
+    photoURL = null,
+  } = user ?? {};
   const [open, setOpen] = useState(false);
 
   const NavContent = () => (
@@ -61,10 +65,10 @@ export function Sidebar({ className, user }: SidebarProps) {
       <div className="grid">
         <div className="flex items-center gap-3 border-t border-zinc-800 p-4">
           <Avatar className="h-10 w-10">
-            {photo_url && (
+            {photoURL && (
               <AvatarImage
-                src={photo_url}
-                alt={first_name || undefined}
+                src={photoURL}
+                alt={displayName || undefined}
                 className="object-cover"
               />
             )}
@@ -74,23 +78,23 @@ export function Sidebar({ className, user }: SidebarProps) {
           </Avatar>
 
           <div className="flex-1">
-            {first_name ? (
-              <p className="text-sm font-medium">{first_name}</p>
+            {displayName ? (
+              <p className="text-sm font-medium">{displayName}</p>
             ) : (
-              <p className="text-sm font-medium">Alex</p>
+              <p className="text-xs font-medium">{email}</p>
             )}
           </div>
           <Button variant="ghost" size="icon">
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </div>
-        <div className="p-4">{id}</div>
+        {/* <div className="p-4">{id}</div>
 
         <div className="p-4">{last_name}</div>
 
         <div className="p-4">{username}</div>
 
-        <div className="p-4">{auth_date}</div>
+        <div className="p-4">{auth_date}</div> */}
 
         {/* <div className="p-4">{hash}</div> */}
       </div>

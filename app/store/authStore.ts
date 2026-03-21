@@ -1,21 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-
-export interface TelegramUser {
-  id: string | null;
-  first_name: string | null;
-  last_name: string | null;
-  username: string | null;
-  photo_url: string | null;
-  auth_date: string | null;
-  hash: string | null;
-}
+import { User } from "firebase/auth";
 
 interface AuthState {
-  user: TelegramUser | null;
+  user: User | null;
   isLoggedIn: boolean;
   isHydrated: boolean;
-  setUser: (user: TelegramUser) => void;
+  setUser: (user: User | null) => void;
   logout: () => void;
 }
 
@@ -29,7 +20,7 @@ export const useAuthStore = create<AuthState>()(
       setUser: (user) =>
         set({
           user,
-          isLoggedIn: !!user?.id,
+          isLoggedIn: !!user?.uid,
           isHydrated: true,
         }),
 
