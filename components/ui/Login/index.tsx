@@ -10,35 +10,35 @@ export default function Login() {
   const { isLoggedIn, isHydrated } = useAuthStore();
   const [showButton, setShowButton] = useState(true);
 
-  useEffect(() => {
-    if (!isHydrated) return;
+  // useEffect(() => {
+  //   if (!isHydrated) return;
 
-    if (isLoggedIn) {
-      setShowButton(false);
-    }
+  //   if (isLoggedIn) {
+  //     setShowButton(false);
+  //   }
 
-    const script = document.createElement("script");
-    script.src = "https://telegram.org/js/telegram-widget.js?23";
-    script.setAttribute("data-telegram-login", "testhubcc_bot");
-    script.setAttribute("data-size", "large");
-    script.setAttribute("data-auth-url", API_PROD);
-    script.setAttribute("data-request-access", "write");
-    script.async = true;
+  //   const script = document.createElement("script");
+  //   script.src = "https://telegram.org/js/telegram-widget.js?23";
+  //   script.setAttribute("data-telegram-login", "testhubcc_bot");
+  //   script.setAttribute("data-size", "large");
+  //   script.setAttribute("data-auth-url", API_PROD);
+  //   script.setAttribute("data-request-access", "write");
+  //   script.async = true;
 
-    if (containerRef.current) {
-      containerRef.current.appendChild(script);
-      setShowLoader(false);
-    }
+  //   if (containerRef.current) {
+  //     containerRef.current.appendChild(script);
+  //     setShowLoader(false);
+  //   }
 
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = "";
-      }
-      document
-        .querySelectorAll('iframe[src*="telegram.org"], .tgme_widget')
-        .forEach((el) => el.remove());
-    };
-  }, [showButton, showLoader, isHydrated, isLoggedIn]);
+  //   return () => {
+  //     if (containerRef.current) {
+  //       containerRef.current.innerHTML = "";
+  //     }
+  //     document
+  //       .querySelectorAll('iframe[src*="telegram.org"], .tgme_widget')
+  //       .forEach((el) => el.remove());
+  //   };
+  // }, [showButton, showLoader, isHydrated, isLoggedIn]);
 
   return (
     <div className="bg-surface flex min-h-screen flex-col items-center justify-center px-6">
@@ -54,8 +54,10 @@ export default function Login() {
       </p>
 
       {/* Контейнер для кнопки */}
-      {showLoader && <div>loading..</div>}
-      {showButton && <div ref={containerRef}></div>}
+      {/* {showLoader && <div>loading..</div>}
+      {showButton && <div ref={containerRef}></div>} */}
+
+      
     </div>
   );
 }

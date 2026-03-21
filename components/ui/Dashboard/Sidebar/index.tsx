@@ -14,16 +14,15 @@ import {
   Menu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { TelegramUser } from "@/app/store/authStore";
+// import { TelegramUser } from "@/app/store/authStore";
 
 interface SidebarProps {
   className?: string;
-  user: TelegramUser;
+  user: any;
 }
 
 export function Sidebar({ className, user }: SidebarProps) {
-  const { id, first_name, last_name, username, photo_url, auth_date, hash } =
-    user;
+  const { uid, displayName: first_name, photoURL: photo_url, email} = user;
   const [open, setOpen] = useState(false);
 
   const NavContent = () => (
@@ -77,20 +76,20 @@ export function Sidebar({ className, user }: SidebarProps) {
             {first_name ? (
               <p className="text-sm font-medium">{first_name}</p>
             ) : (
-              <p className="text-sm font-medium">Alex</p>
+              <p className="text-xs font-medium">{email}</p>
             )}
           </div>
           <Button variant="ghost" size="icon">
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </div>
-        <div className="p-4">{id}</div>
+        {/* <div className="p-4">{id}</div>
 
         <div className="p-4">{last_name}</div>
 
         <div className="p-4">{username}</div>
 
-        <div className="p-4">{auth_date}</div>
+        <div className="p-4">{auth_date}</div> */}
 
         {/* <div className="p-4">{hash}</div> */}
       </div>
