@@ -25,6 +25,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuthStore } from "@/app/store/authStore";
 import { RegisterFormValues, registerSchema } from "@/app/schemas/schema";
+import Link from "next/link";
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -173,9 +174,9 @@ export default function RegisterForm() {
         <CardFooter className="text-muted-foreground flex flex-col items-center justify-center text-sm">
           <p>
             Already registered?{" "}
-            <a href="/login" className="text-primary hover:underline">
+            <Link href="/login" className="text-primary hover:underline">
               Log in
-            </a>
+            </Link>
           </p>
         </CardFooter>
       </Card>

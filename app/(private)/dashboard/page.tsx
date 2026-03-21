@@ -9,13 +9,10 @@ import { Sidebar } from "@/components/ui/Dashboard/Sidebar";
 import { Plus } from "lucide-react";
 
 const userInitial = {
-  id: "1",
-  first_name: "Alex",
-  last_name: "Peters",
-  username: "@alexpeters",
-  photo_url: null,
-  auth_date: "",
-  hash: "sdasdadada",
+  uid: "1",
+  displayName: "Alex",
+  photoURL: null,
+  email: "test@mail.com",
 };
 
 export default function DashboardPage() {

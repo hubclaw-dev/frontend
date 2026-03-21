@@ -3,9 +3,11 @@
 import { useAuth } from "../../../hooks/useAuth";
 import { sendEmailVerification } from "firebase/auth";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function VerifyEmailPage() {
   const { user } = useAuth();
+  const router = useRouter();
 
   const resendVerification = async () => {
     if (!user) return;
@@ -29,6 +31,15 @@ export default function VerifyEmailPage() {
 
       <Button onClick={resendVerification} variant="outline">
         Send email again
+      </Button>
+
+      <Button
+        onClick={() => {
+          router.push("/dashboard");
+        }}
+        variant="outline"
+      >
+        I have verified email
       </Button>
     </div>
   );

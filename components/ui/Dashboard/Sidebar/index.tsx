@@ -14,15 +14,20 @@ import {
   Menu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-// import { TelegramUser } from "@/app/store/authStore";
+import { User } from "firebase/auth";
 
 interface SidebarProps {
   className?: string;
-  user: any;
+  user: User | null;
 }
 
 export function Sidebar({ className, user }: SidebarProps) {
-  const { uid, displayName: first_name, photoURL: photo_url, email } = user;
+  const {
+    uid = "",
+    displayName = null,
+    email = null,
+    photoURL = null,
+  } = user ?? {};
   const [open, setOpen] = useState(false);
 
   const NavContent = () => (
@@ -60,10 +65,10 @@ export function Sidebar({ className, user }: SidebarProps) {
       <div className="grid">
         <div className="flex items-center gap-3 border-t border-zinc-800 p-4">
           <Avatar className="h-10 w-10">
-            {photo_url && (
+            {photoURL && (
               <AvatarImage
-                src={photo_url}
-                alt={first_name || undefined}
+                src={photoURL}
+                alt={displayName || undefined}
                 className="object-cover"
               />
             )}
@@ -73,8 +78,8 @@ export function Sidebar({ className, user }: SidebarProps) {
           </Avatar>
 
           <div className="flex-1">
-            {first_name ? (
-              <p className="text-sm font-medium">{first_name}</p>
+            {displayName ? (
+              <p className="text-sm font-medium">{displayName}</p>
             ) : (
               <p className="text-xs font-medium">{email}</p>
             )}

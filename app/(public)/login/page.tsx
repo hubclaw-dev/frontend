@@ -22,6 +22,7 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase";
 import Loading from "@/components/ui/Loading";
+import Link from "next/link";
 
 export default function LoginPage() {
   const { loading } = useAuth();
@@ -75,7 +76,6 @@ export default function LoginPage() {
       switch (error.code) {
         case "auth/invalid-credential":
         case "auth/user-not-found":
-          description = "user wasn't found";
         case "auth/wrong-password":
           description = "Wrong email or password. Register or try again";
           break;
@@ -176,9 +176,9 @@ export default function LoginPage() {
         <CardFooter className="text-muted-foreground flex flex-col items-center justify-center space-y-2 pt-2 text-sm">
           <p>
             No account?{" "}
-            <a href="/register" className="text-primary hover:underline">
+            <Link href="/register" className="text-primary hover:underline">
               Register
-            </a>
+            </Link>
           </p>
           {/* <a
             href="/forgot-password"
