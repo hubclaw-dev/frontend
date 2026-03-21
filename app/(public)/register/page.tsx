@@ -26,6 +26,7 @@ import { Label } from "@/components/ui/label";
 import { useAuthStore } from "@/app/store/authStore";
 import { RegisterFormValues, registerSchema } from "@/app/schemas/schema";
 import Link from "next/link";
+import { HUBCLAW_PROD } from "@/app/consts";
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -60,7 +61,7 @@ export default function RegisterForm() {
       );
 
       setUser(userCredential.user);
-      const redirectUrl = `${window.location.origin}/dashboard?email=${encodeURIComponent(userCredential.user.email || "")}`;
+      const redirectUrl = `${HUBCLAW_PROD}/dashboard?email=${encodeURIComponent(userCredential.user.email || "")}`;
 
       await sendEmailVerification(userCredential.user, {
         url: redirectUrl,
