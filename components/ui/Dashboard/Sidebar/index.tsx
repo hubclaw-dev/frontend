@@ -22,7 +22,7 @@ interface SidebarProps {
 }
 
 export function Sidebar({ className, user }: SidebarProps) {
-  const { uid, displayName: first_name, photoURL: photo_url, email} = user;
+  const { uid, displayName: first_name, photoURL: photo_url, email } = user;
   const [open, setOpen] = useState(false);
 
   const NavContent = () => (

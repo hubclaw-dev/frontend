@@ -5,15 +5,14 @@ import { sendEmailVerification } from "firebase/auth";
 import { Button } from "@/components/ui/button";
 
 export default function VerifyEmailPage() {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
   const resendVerification = async () => {
     if (!user) return;
 
     try {
       await sendEmailVerification(user);
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   if (!user) {
@@ -22,7 +21,7 @@ export default function VerifyEmailPage() {
 
   return (
     <div className="p-8 text-center">
-      <h1 className="text-2xl font-bold mb-4">Verify email</h1>
+      <h1 className="mb-4 text-2xl font-bold">Verify email</h1>
       <p className="mb-6">
         We have sent a letter at <strong>{user.email}</strong>.<br />
         Check your email (and Spam folder). Update the page after verifiying.

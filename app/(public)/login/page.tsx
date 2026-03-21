@@ -3,7 +3,14 @@
 import { useAuthStore } from "@/app/store/authStore";
 import { signInWithGoogle, useAuth } from "../../../hooks/useAuth";
 import { useRouter } from "next/navigation";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,13 +25,13 @@ import Loading from "@/components/ui/Loading";
 
 export default function LoginPage() {
   const { loading } = useAuth();
-  const {user, setUser} = useAuthStore();
+  const { user, setUser } = useAuthStore();
   const router = useRouter();
-    const [isLoading, setIsLoading] = useState(false);
-    const [serverError, setServerError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const form = useForm<LoginFormValues>({
-  resolver: zodResolver(loginSchema),
+    resolver: zodResolver(loginSchema),
     defaultValues: {
       email: "",
       password: "",
@@ -38,7 +45,7 @@ export default function LoginPage() {
     reset,
   } = form;
 
-  console.log("zustand user:: ", user)
+  console.log("zustand user:: ", user);
 
   if (loading) return <Loading />;
   if (user) {
@@ -46,14 +53,14 @@ export default function LoginPage() {
     return null;
   }
 
-    const onEmailSubmit = async (data: LoginFormValues) => {
+  const onEmailSubmit = async (data: LoginFormValues) => {
     setIsLoading(true);
 
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         data.email,
-        data.password
+        data.password,
       );
 
       setUser(userCredential.user);
@@ -61,38 +68,35 @@ export default function LoginPage() {
 
       router.push("/dashboard");
     } catch (error: any) {
-setServerError(null);
+      setServerError(null);
 
-  let description = "Counldn't log in";
+      let description = "Counldn't log in";
 
-  switch (error.code) {
-    case "auth/invalid-credential":
-    case "auth/user-not-found":
-      description = "user wasn't found"
-    case "auth/wrong-password":
-      description = "Wrong email or password. Register or try again";
-      break;
-    case "auth/invalid-email":
-      description = "Incorrect format of email";
-      break;
-    default:
-      description = error.message || "Unknown error";
-  }
+      switch (error.code) {
+        case "auth/invalid-credential":
+        case "auth/user-not-found":
+          description = "user wasn't found";
+        case "auth/wrong-password":
+          description = "Wrong email or password. Register or try again";
+          break;
+        case "auth/invalid-email":
+          description = "Incorrect format of email";
+          break;
+        default:
+          description = error.message || "Unknown error";
+      }
 
-  setServerError(description);
-
+      setServerError(description);
     } finally {
       setIsLoading(false);
     }
   };
 
-
-
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
-            <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">
+          <CardTitle className="text-center text-2xl font-bold">
             Log in
           </CardTitle>
           <CardDescription className="text-center">
@@ -117,7 +121,7 @@ setServerError(null);
               <Separator />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
+              <span className="bg-background text-muted-foreground px-2">
                 or
               </span>
             </div>
@@ -135,7 +139,9 @@ setServerError(null);
                 disabled={isLoading}
               />
               {errors.email && (
-                <p className="text-sm text-destructive">{errors.email.message}</p>
+                <p className="text-destructive text-sm">
+                  {errors.email.message}
+                </p>
               )}
             </div>
 
@@ -149,27 +155,25 @@ setServerError(null);
                 disabled={isLoading}
               />
               {errors.password && (
-                <p className="text-sm text-destructive">{errors.password.message}</p>
+                <p className="text-destructive text-sm">
+                  {errors.password.message}
+                </p>
               )}
             </div>
 
-            <Button
-              type="submit"
-              className="w-full mt-2"
-              disabled={isLoading}
-            >
+            <Button type="submit" className="mt-2 w-full" disabled={isLoading}>
               {isLoading ? "Logging in..." : "Log in"}
             </Button>
 
             {serverError && (
-  <div className="mt-4 rounded-md bg-destructive/15 p-3 text-sm text-destructive">
-    {serverError}
-  </div>
-)}
+              <div className="bg-destructive/15 text-destructive mt-4 rounded-md p-3 text-sm">
+                {serverError}
+              </div>
+            )}
           </form>
         </CardContent>
 
-                <CardFooter className="flex flex-col items-center justify-center text-sm text-muted-foreground space-y-2 pt-2">
+        <CardFooter className="text-muted-foreground flex flex-col items-center justify-center space-y-2 pt-2 text-sm">
           <p>
             No account?{" "}
             <a href="/register" className="text-primary hover:underline">
@@ -183,7 +187,7 @@ setServerError(null);
             Forgot your password?
           </a> */}
         </CardFooter>
-        </Card>
+      </Card>
     </div>
   );
 }

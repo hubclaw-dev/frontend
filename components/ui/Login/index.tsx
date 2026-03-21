@@ -56,8 +56,6 @@ export default function Login() {
       {/* Контейнер для кнопки */}
       {/* {showLoader && <div>loading..</div>}
       {showButton && <div ref={containerRef}></div>} */}
-
-      
     </div>
   );
 }

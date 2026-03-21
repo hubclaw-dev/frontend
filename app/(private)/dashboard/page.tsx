@@ -21,7 +21,7 @@ const userInitial = {
 export default function DashboardPage() {
   const userState = useAuthStore((state) => state.user);
   // const user = userState ?? userInitial;
-  console.log("userstate :: ", userState)
+  console.log("userstate :: ", userState);
 
   return (
     <div className="flex min-h-screen bg-zinc-50">

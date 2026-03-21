@@ -3,7 +3,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+} from "firebase/auth";
 import { auth } from "../../../firebase";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -25,8 +29,8 @@ import { RegisterFormValues, registerSchema } from "@/app/schemas/schema";
 export default function RegisterForm() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
-  const {setUser} = useAuthStore();
-      const [serverError, setServerError] = useState<string | null>(null);
+  const { setUser } = useAuthStore();
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -51,11 +55,11 @@ export default function RegisterForm() {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         data.email,
-        data.password
+        data.password,
       );
 
-      setUser(userCredential.user)
-      const redirectUrl = `${window.location.origin}/dashboard?email=${encodeURIComponent(userCredential.user.email || "")}`
+      setUser(userCredential.user);
+      const redirectUrl = `${window.location.origin}/dashboard?email=${encodeURIComponent(userCredential.user.email || "")}`;
 
       await sendEmailVerification(userCredential.user, {
         url: redirectUrl,
@@ -86,18 +90,17 @@ export default function RegisterForm() {
           description = error.message || "Unknown error";
       }
 
-       setServerError(description);
-
+      setServerError(description);
     } finally {
       setIsLoading(false);
     }
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted/40 px-4">
+    <div className="bg-muted/40 flex min-h-screen items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">
+          <CardTitle className="text-center text-2xl font-bold">
             Create an account
           </CardTitle>
           <CardDescription className="text-center">
@@ -107,8 +110,6 @@ export default function RegisterForm() {
 
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            
-
             {/* Email */}
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -119,7 +120,7 @@ export default function RegisterForm() {
                 {...register("email")}
               />
               {errors.email && (
-                <p className="text-sm text-destructive">
+                <p className="text-destructive text-sm">
                   {errors.email.message}
                 </p>
               )}
@@ -135,7 +136,7 @@ export default function RegisterForm() {
                 {...register("password")}
               />
               {errors.password && (
-                <p className="text-sm text-destructive">
+                <p className="text-destructive text-sm">
                   {errors.password.message}
                 </p>
               )}
@@ -151,25 +152,25 @@ export default function RegisterForm() {
                 {...register("passwordConfirm")}
               />
               {errors.passwordConfirm && (
-                <p className="text-sm text-destructive">
+                <p className="text-destructive text-sm">
                   {errors.passwordConfirm.message}
                 </p>
               )}
             </div>
 
-            <Button type="submit" className="w-full mt-6" disabled={isLoading}>
+            <Button type="submit" className="mt-6 w-full" disabled={isLoading}>
               {isLoading ? "Creating an account..." : "Register"}
             </Button>
 
-                        {serverError && (
-  <div className="mt-4 rounded-md bg-destructive/15 p-3 text-sm text-destructive">
-    {serverError}
-  </div>
-)}
+            {serverError && (
+              <div className="bg-destructive/15 text-destructive mt-4 rounded-md p-3 text-sm">
+                {serverError}
+              </div>
+            )}
           </form>
         </CardContent>
 
-        <CardFooter className="flex flex-col items-center justify-center text-sm text-muted-foreground">
+        <CardFooter className="text-muted-foreground flex flex-col items-center justify-center text-sm">
           <p>
             Already registered?{" "}
             <a href="/login" className="text-primary hover:underline">

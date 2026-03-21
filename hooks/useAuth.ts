@@ -24,7 +24,7 @@ export function signOut() {
 export function useAuth() {
   // const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const {user, setUser} = useAuthStore()
+  const { user, setUser } = useAuthStore();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
