@@ -6,16 +6,16 @@ import * as z from "zod";
  */
 export const registerSchema = z
   .object({
-    email: z.string().email({ message: "Некорректный email" }),
+    email: z.string().email({ message: "Incorrect email" }),
     password: z
       .string()
-      .min(8, { message: "Пароль минимум 8 символов" })
-      .regex(/[A-Z]/, { message: "Нужна хотя бы одна заглавная буква" })
-      .regex(/[0-9]/, { message: "Нужна хотя бы одна цифра" }),
+      .min(8, { message: "At least 8 characters" })
+      .regex(/[A-Z]/, { message: "At least 1 capital letter" })
+      .regex(/[0-9]/, { message: "At least 1 number" }),
     passwordConfirm: z.string(),
   })
   .refine((data) => data.password === data.passwordConfirm, {
-    message: "Пароли не совпадают",
+    message: "Passwords don't match",
     path: ["passwordConfirm"],
   });
 
@@ -26,8 +26,8 @@ export type RegisterFormValues = z.infer<typeof registerSchema>;
  * checks email and password
  */
 export const loginSchema = z.object({
-  email: z.string().email({ message: "Некорректный email" }),
-  password: z.string().min(1, { message: "Введите пароль" }),
+  email: z.string().email({ message: "Incorrect email" }),
+  password: z.string().min(1, { message: "Enter password" }),
 });
 
 export type LoginFormValues = z.infer<typeof loginSchema>;
