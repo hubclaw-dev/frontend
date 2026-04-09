@@ -1,16 +1,15 @@
 import Image, { StaticImageData } from "next/image";
 
-export function LearnBlock({
-  icon,
-  color,
-  title,
-  desc,
-}: {
+interface Props {
   icon: StaticImageData;
   color: string;
   title: string;
   desc: string;
-}) {
+}
+
+export function LearnBlock(props: Props) {
+  const { icon, color, title, desc } = props
+
   return (
     <div className="flex flex-col justify-between rounded-[16px] border border-[1px] border-[#EDEDED] p-[16px]">
       <div

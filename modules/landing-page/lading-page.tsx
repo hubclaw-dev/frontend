@@ -14,11 +14,8 @@ export function LandingPage() {
       <TryFreeHeroSection />
       <SeeInActionSection />
       <LearnTheRest />
-      <ThreeSteps />
-      <PricesBlock />
       <FaqBlock />
       <TestimonialSlider />
-      <FreeTrialBlock />
       <Footer />
     </div>
   );

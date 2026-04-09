@@ -29,7 +29,7 @@ export function SeeInActionSection() {
         <br /> agent should be doing
       </div>
 
-      <div className="grid-col mb-[40px] grid gap-[16px]">
+      <div className="flex flex-col sm:flex-row mb-[40px] gap-[16px] justify-center">
         {SECTION_BLOCKS.map((block) => (
           <SeeInActionBlock
             key={block.id}
