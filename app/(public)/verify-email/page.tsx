@@ -1,8 +1,8 @@
 "use client";
 
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth } from "../../../shared/hooks/useAuth";
 import { sendEmailVerification } from "firebase/auth";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/shared/components/ui/button";
 import { useRouter } from "next/navigation";
 
 export default function VerifyEmailPage() {
@@ -14,7 +14,7 @@ export default function VerifyEmailPage() {
 
     try {
       await sendEmailVerification(user);
-    } catch (err) {}
+    } catch (err) { }
   };
 
   if (!user) {

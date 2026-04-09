@@ -1,8 +1,8 @@
 "use client"
 
-import Header from "@/components/ui/Header";
+import Header from "@/shared/components/ui/Header";
 import { useAuthStore } from "../store/authStore";
-import Loading from "@/components/ui/Loading";
+import Loading from "@/shared/components/ui/Loading";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const isHydrated = useAuthStore((s) => s.isHydrated);
@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
-      <main className="pt-20">{children}</main>
+      <main className="">{children}</main>
     </>
   );
 }

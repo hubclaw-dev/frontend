@@ -1,11 +1,11 @@
 "use client";
 
 import { useAuthStore } from "@/app/store/authStore";
-import { Button } from "@/components/ui/button";
-import { ActiveBotsTable } from "@/components/ui/Dashboard/ActiveBotsTable";
-import { AnalyticsChart } from "@/components/ui/Dashboard/AnalyticsChart";
-import { MetricsCards } from "@/components/ui/Dashboard/MetricsCards/Index";
-import { Sidebar } from "@/components/ui/Dashboard/Sidebar";
+import { Button } from "@/shared/components/ui/button";
+import { ActiveBotsTable } from "@/shared/components/ui/Dashboard/ActiveBotsTable";
+import { AnalyticsChart } from "@/shared/components/ui/Dashboard/AnalyticsChart";
+import { MetricsCards } from "@/shared/components/ui/Dashboard/MetricsCards/Index";
+import { Sidebar } from "@/shared/components/ui/Dashboard/Sidebar";
 import { Plus } from "lucide-react";
 
 const userInitial = {

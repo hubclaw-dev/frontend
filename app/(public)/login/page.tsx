@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuthStore } from "@/app/store/authStore";
-import { signInWithGoogle, useAuth } from "../../../hooks/useAuth";
+import { signInWithGoogle, useAuth } from "../../../shared/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import {
   Card,
@@ -10,18 +10,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
+} from "@/shared/components/ui/card";
+import { Button } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Label } from "@/shared/components/ui/label";
+import { Separator } from "@/shared/components/ui/separator";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginFormValues, loginSchema } from "@/app/schemas/schema";
+import { LoginFormValues, loginSchema } from "@/shared/schemas/schema";
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase";
-import Loading from "@/components/ui/Loading";
+import Loading from "@/shared/components/ui/Loading";
 import Link from "next/link";
 
 export default function LoginPage() {

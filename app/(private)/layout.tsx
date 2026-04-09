@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "../store/authStore";
 import { useEffect, useState } from "react";
-import Loading from "@/components/ui/Loading";
+import Loading from "@/shared/components/ui/Loading";
 import { auth } from "@/firebase";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/shared/hooks/useAuth";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { isLoggedIn, isHydrated } = useAuthStore();
