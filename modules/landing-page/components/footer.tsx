@@ -34,7 +34,7 @@ const DOC_BLOCK = [
 
 export function Footer() {
   return (
-    <div className="px-[16px] pt-[50px]">
+    <div className="3xl:max-w-[1520px] 3xl:mx-auto px-[16px] pt-[50px]">
       <div className="mb-[40px] grid grid-cols-2 gap-[8px]">
         <div className="py-[9px] font-bold">HubClaw</div>
 

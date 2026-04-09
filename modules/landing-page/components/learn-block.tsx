@@ -8,7 +8,7 @@ interface Props {
 }
 
 export function LearnBlock(props: Props) {
-  const { icon, color, title, desc } = props
+  const { icon, color, title, desc } = props;
 
   return (
     <div className="flex flex-col justify-between rounded-[16px] border border-[1px] border-[#EDEDED] p-[16px]">

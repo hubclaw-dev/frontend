@@ -29,7 +29,15 @@ interface SidebarProps {
   user: User | null;
 }
 
-export function Sidebar({ className, user }: SidebarProps) {
+interface NavProps {
+  setOpen: (open: boolean) => void;
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
+}
+
+export function Sidebar(props: SidebarProps) {
+  const { className, user } = props;
   const {
     uid = "",
     displayName = null,
@@ -38,7 +46,58 @@ export function Sidebar({ className, user }: SidebarProps) {
   } = user ?? {};
   const [open, setOpen] = useState(false);
 
-  const NavContent = () => (
+  return (
+    <>
+      {/* Мобильная версия — бургер */}
+      <div className={cn("lg:hidden", className)}>
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="fixed top-4 left-4 z-50"
+            >
+              <Menu className="h-6 w-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent
+            side="left"
+            className="w-72 border-r border-zinc-800 bg-zinc-950 p-0"
+          >
+            <div className="flex h-full flex-col text-white">
+              <NavContent
+                setOpen={setOpen}
+                displayName={displayName}
+                email={email}
+                photoURL={photoURL}
+              />
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      {/* Десктопная версия — всегда видимая слева */}
+      <div
+        className={cn(
+          "fixed top-0 left-0 hidden h-screen flex-col border-r border-zinc-800 bg-zinc-950 text-white lg:flex lg:w-64",
+          className,
+        )}
+      >
+        <NavContent
+          setOpen={setOpen}
+          displayName={displayName}
+          email={email}
+          photoURL={photoURL}
+        />
+      </div>
+    </>
+  );
+}
+
+function NavContent(props: NavProps) {
+  const { setOpen, displayName, email, photoURL } = props;
+
+  return (
     <>
       <div className="border-b border-zinc-800 p-6 text-2xl font-bold">
         HubClaw
@@ -105,43 +164,6 @@ export function Sidebar({ className, user }: SidebarProps) {
         <div className="p-4">{auth_date}</div> */}
 
         {/* <div className="p-4">{hash}</div> */}
-      </div>
-    </>
-  );
-
-  return (
-    <>
-      {/* Мобильная версия — бургер */}
-      <div className={cn("lg:hidden", className)}>
-        <Sheet open={open} onOpenChange={setOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="fixed top-4 left-4 z-50"
-            >
-              <Menu className="h-6 w-6" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent
-            side="left"
-            className="w-72 border-r border-zinc-800 bg-zinc-950 p-0"
-          >
-            <div className="flex h-full flex-col text-white">
-              <NavContent />
-            </div>
-          </SheetContent>
-        </Sheet>
-      </div>
-
-      {/* Десктопная версия — всегда видимая слева */}
-      <div
-        className={cn(
-          "fixed top-0 left-0 hidden h-screen flex-col border-r border-zinc-800 bg-zinc-950 text-white lg:flex lg:w-64",
-          className,
-        )}
-      >
-        <NavContent />
       </div>
     </>
   );

@@ -14,7 +14,7 @@ export default function SkillsSection(props: { id: string }) {
           Your agent can do almost anything.
           <br />
           <span className="text-muted-foreground">
-            And what it can't do today — it figures out tomorrow.
+            And what it can&apos;t do today — it figures out tomorrow.
           </span>
         </h2>
 
@@ -34,7 +34,7 @@ export default function SkillsSection(props: { id: string }) {
             <CardContent className="text-muted-foreground text-sm leading-relaxed">
               Monitors competitors daily and sends you a briefing with what
               changed and what it means. Tracks industry news and surfaces
-              what's relevant to you — before your morning coffee.
+              what&apos;s relevant to you — before your morning coffee.
             </CardContent>
           </Card>
 
@@ -71,9 +71,9 @@ export default function SkillsSection(props: { id: string }) {
 
         {/* Closing line */}
         <p className="text-muted-foreground mt-8 max-w-3xl text-lg">
-          There's a Skills Hub with hundreds of capabilities — and it keeps
-          growing. If your agent doesn't know how to do something, it finds a
-          way to learn.
+          There&apos;s a Skills Hub with hundreds of capabilities — and it keeps
+          growing. If your agent doesn&apos;t know how to do something, it finds
+          a way to learn.
         </p>
       </div>
     </section>

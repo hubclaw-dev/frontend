@@ -7,7 +7,7 @@ export default function PainSection() {
         {/* Headline */}
         <div className="text-center">
           <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
-            Every day, you're doing work your agent should be doing.
+            Every day, you&apos;re doing work your agent should be doing.
           </h2>
         </div>
 
@@ -34,9 +34,9 @@ export default function PainSection() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              Your competitor's prices changed this morning. A market signal
-              appeared at 7am. A client email is sitting unanswered. Three
-              things slipped while you were handling one.
+              Your competitor&apos;s prices changed this morning. A market
+              signal appeared at 7am. A client email is sitting unanswered.
+              Three things slipped while you were handling one.
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
@@ -51,8 +51,8 @@ export default function PainSection() {
             </p>
 
             <p className="text-muted-foreground leading-relaxed">
-              HubClaw agents don't wait. They wake up, check what matters, act
-              on what they can, and tell you only what needs you.
+              HubClaw agents don&apos;t wait. They wake up, check what matters,
+              act on what they can, and tell you only what needs you.
             </p>
           </div>
         </div>

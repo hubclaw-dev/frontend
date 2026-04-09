@@ -48,7 +48,7 @@ export default function TestimonialSlider() {
   };
 
   return (
-    <div className="mb-[50px] px-[16px] lg:max-w-[1520px] lg:mx-auto">
+    <div className="mb-[50px] px-[16px] lg:mx-auto lg:max-w-[1520px]">
       <div className="relative rounded-[16px] border border-[#EDEDED]">
         {/* <Image
           src={TestimonialsBg}
@@ -88,7 +88,7 @@ export default function TestimonialSlider() {
                 )}
               >
                 <div className="mb-[32px] text-[16px] leading-[120%] font-medium tracking-[-0.02em] text-[#000000]">
-                  "{TESTIMONIALS[currentIndex].text}"
+                  {TESTIMONIALS[currentIndex].text}
                 </div>
                 <p className="mb-[20px] text-[12px] leading-[120%] font-medium tracking-[-0.02em] text-[#CCCCCC]">
                   {TESTIMONIALS[currentIndex].author}

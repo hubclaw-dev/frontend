@@ -24,12 +24,12 @@ export function SeeInActionSection() {
     <div className="mb-[100px] px-[16px]">
       <div className="mb-[40px] text-center text-[32px] leading-[100%] font-medium tracking-[-0.06em]">
         <span className="text-[#CCCCCC]">
-          Every day, <br /> you're doing work that
+          Every day, <br /> you&apos;re doing work that
         </span>{" "}
         <br /> agent should be doing
       </div>
 
-      <div className="flex flex-col sm:flex-row mb-[40px] gap-[16px] justify-center">
+      <div className="mb-[40px] flex flex-col justify-center gap-[16px] sm:flex-row">
         {SECTION_BLOCKS.map((block) => (
           <SeeInActionBlock
             key={block.id}

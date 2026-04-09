@@ -5,6 +5,7 @@ import { Button } from "@/shared/components/ui/button";
 import { X, Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/app/store/authStore";
+import Link from "next/link";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -35,9 +36,9 @@ export default function Header() {
     <header className="fixed top-0 left-0 z-50 w-full bg-white/70 shadow-sm backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="/" className="text-2xl font-bold tracking-tight">
+        <Link href="/" className="text-2xl font-bold tracking-tight">
           HubClaw
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-6 md:flex">

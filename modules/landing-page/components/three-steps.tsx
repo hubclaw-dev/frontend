@@ -55,7 +55,7 @@ export function ThreeSteps() {
         <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em]">
           <span className="text-[#CCCCCC]">Three steps</span>
           <br />
-          Then it's just - working
+          Then it&apos;s just - working
         </p>
       </div>
       <div>

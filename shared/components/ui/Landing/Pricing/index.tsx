@@ -78,7 +78,7 @@ export default function PricingSection(props: { id: string }) {
           Free to start.
           <br />
           <span className="text-foreground/80">
-            Probably the best $19 you'll spend.
+            Probably the best $19 you&apos;ll spend.
           </span>
         </h2>
 

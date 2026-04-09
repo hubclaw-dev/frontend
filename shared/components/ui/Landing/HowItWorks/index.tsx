@@ -29,7 +29,7 @@ export default function HowItWorks() {
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-12 text-center">
         {/* Headline */}
         <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
-          Three steps. Then it's just — working.
+          Three steps. Then it&apos;s just — working.
         </h2>
 
         {/* Steps */}

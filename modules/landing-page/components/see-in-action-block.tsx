@@ -12,7 +12,7 @@ export function SeeInActionBlock(props: Props) {
   return (
     <div
       className={cn(
-        "border-1px flex max-w-full sm:max-w-[230px] lg:max-w-[314px] 3xl:max-w-[496px] flex-col justify-between rounded-[16px] border border-[#EDEDED]",
+        "border-1px 3xl:max-w-[496px] flex max-w-full flex-col justify-between rounded-[16px] border border-[#EDEDED] sm:max-w-[230px] lg:max-w-[314px]",
         height ? `h-[${height}px]` : "h-[258px]",
       )}
     >
