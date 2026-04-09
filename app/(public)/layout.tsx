@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Header from "@/shared/components/ui/Header";
 import { useAuthStore } from "../store/authStore";
@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const isHydrated = useAuthStore((s) => s.isHydrated);
 
   if (!isHydrated) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (

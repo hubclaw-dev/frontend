@@ -14,7 +14,7 @@ export default function VerifyEmailPage() {
 
     try {
       await sendEmailVerification(user);
-    } catch (err) { }
+    } catch (err) {}
   };
 
   if (!user) {

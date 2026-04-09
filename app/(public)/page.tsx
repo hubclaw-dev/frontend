@@ -43,6 +43,5 @@ export default function Home() {
     <div className="">
       <LandingPage />
     </div>
-
   );
 }

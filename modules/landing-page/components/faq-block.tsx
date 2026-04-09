@@ -1,33 +1,43 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/shared/components/ui/accordion"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/shared/components/ui/accordion";
 
 const FAQ_ITEMS = [
   {
-    id: 'item-1',
-    question: 'Do I need any technical skills?',
-    answer: 'Nothing. If you can send a Telegram message, you\'re ready.',
+    id: "item-1",
+    question: "Do I need any technical skills?",
+    answer: "Nothing. If you can send a Telegram message, you're ready.",
   },
   {
-    id: 'item-2',
-    question: 'Does it remember what I told it last week?',
-    answer: 'Yes, the bot remembers the context of previous messages (depending on memory settings).',
+    id: "item-2",
+    question: "Does it remember what I told it last week?",
+    answer:
+      "Yes, the bot remembers the context of previous messages (depending on memory settings).",
   },
   {
-    id: 'item-3',
-    question: 'What if it can\'t do something I need?',
-    answer: 'In that case, it will honestly tell you about it and suggest alternative options.',
+    id: "item-3",
+    question: "What if it can't do something I need?",
+    answer:
+      "In that case, it will honestly tell you about it and suggest alternative options.",
   },
   {
-    id: 'item-4',
-    question: 'Can I use my own OpenAI or Anthropic key?',
-    answer: 'Yes, you can connect your own OpenAI or Anthropic API key in the bot settings.',
+    id: "item-4",
+    question: "Can I use my own OpenAI or Anthropic key?",
+    answer:
+      "Yes, you can connect your own OpenAI or Anthropic API key in the bot settings.",
   },
 ];
 
 export function FaqBlock() {
   return (
-    <div className="px-[16px] mb-[50px]">
-      <div className="text-center flex flex-col gap-[24px] mb-[40px]">
-        <p className="text-[32px] leading-[100%] tracking-[-0.06em] font-medium">FAQ</p>
+    <div className="mb-[50px] px-[16px]">
+      <div className="mb-[40px] flex flex-col gap-[24px] text-center">
+        <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em]">
+          FAQ
+        </p>
       </div>
       <Accordion
         type="single"
@@ -39,9 +49,9 @@ export function FaqBlock() {
           <AccordionItem
             key={item.id}
             value={item.id}
-            className="border border-border rounded-xl bg-card p-[16px]"
+            className="border-border bg-card rounded-xl border p-[16px]"
           >
-            <AccordionTrigger className="text-left hover:no-underline text-[16px] font-medium">
+            <AccordionTrigger className="text-left text-[16px] font-medium hover:no-underline">
               {item.question}
             </AccordionTrigger>
             <AccordionContent className="text-muted-foreground h-fit text-[14px]">
@@ -51,5 +61,5 @@ export function FaqBlock() {
         ))}
       </Accordion>
     </div>
-  )
+  );
 }

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import Image from "next/image"
-import { useState } from 'react';
-import { motion, AnimatePresence, PanInfo } from 'framer-motion';
-import classNames from 'classnames';
-import { CTAButton } from '@/shared/components/ui/Button/cta-button';
-import TestimonialsBg from "../images/testimonial-bg.png"
+import Image from "next/image";
+import { useState } from "react";
+import { motion, AnimatePresence, PanInfo } from "framer-motion";
+import classNames from "classnames";
+import { CTAButton } from "@/shared/components/ui/Button/cta-button";
+import TestimonialsBg from "../images/testimonial-bg.png";
 
 const TESTIMONIALS = [
   {
@@ -27,7 +27,8 @@ export default function TestimonialSlider() {
   const [direction, setDirection] = useState(0);
 
   const paginate = (newDirection: number) => {
-    const nextIndex = (currentIndex + newDirection + TESTIMONIALS.length) % TESTIMONIALS.length;
+    const nextIndex =
+      (currentIndex + newDirection + TESTIMONIALS.length) % TESTIMONIALS.length;
     setDirection(newDirection);
     setCurrentIndex(nextIndex);
   };
@@ -38,35 +39,39 @@ export default function TestimonialSlider() {
 
     if (info.offset.x > swipeThreshold || info.velocity.x > velocityThreshold) {
       paginate(-1);
-    } else if (info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold) {
+    } else if (
+      info.offset.x < -swipeThreshold ||
+      info.velocity.x < -velocityThreshold
+    ) {
       paginate(1);
     }
   };
 
   return (
-    <div className="px-[16px] mb-[50px]">
-
-      <div className="relative border border-[#EDEDED] rounded-[16px]">
+    <div className="mb-[50px] px-[16px]">
+      <div className="relative rounded-[16px] border border-[#EDEDED]">
         <Image
           src={TestimonialsBg}
           alt="background"
           // width={TestimonialsBg.width / 2}
           // height={TestimonialsBg.height / 2}
           fill
-          className="object-cover rounded-[16px]"
+          className="rounded-[16px] object-cover"
           priority={false}
         />
         <div className="relative z-10">
           {/* Заголовок */}
-          <div className="text-center pt-[24px] pb-[40px]">
-            <h2 className="text-[32px] font-medium leading-[100%] tracking-[-0.06em] text-[#000000]">
-              <span className="text-[#CCCCCC]">People who <br /></span>
+          <div className="pt-[24px] pb-[40px] text-center">
+            <h2 className="text-[32px] leading-[100%] font-medium tracking-[-0.06em] text-[#000000]">
+              <span className="text-[#CCCCCC]">
+                People who <br />
+              </span>
               stopped doing things themselves
             </h2>
           </div>
 
           {/* Slider */}
-          <div className="flex items-center justify-center overflow-hidden relative">
+          <div className="relative flex items-center justify-center overflow-hidden">
             <AnimatePresence custom={direction} mode="wait">
               <motion.blockquote
                 key={currentIndex}
@@ -80,14 +85,14 @@ export default function TestimonialSlider() {
                 dragElastic={0.2}
                 onDragEnd={handleDragEnd}
                 className={classNames(
-                  "text-center cursor-grab active:cursor-grabbing select-none px-[24px] h-[125px]",
-                  "text-xl md:text-2xl text-gray-700 leading-relaxed max-w-lg mx-auto"
+                  "h-[125px] cursor-grab px-[24px] text-center select-none active:cursor-grabbing",
+                  "mx-auto max-w-lg text-xl leading-relaxed text-gray-700 md:text-2xl",
                 )}
               >
-                <div className="text-[#000000] text-[16px] leading-[120%] font-medium tracking-[-0.02em] mb-[32px]">
+                <div className="mb-[32px] text-[16px] leading-[120%] font-medium tracking-[-0.02em] text-[#000000]">
                   "{TESTIMONIALS[currentIndex].text}"
                 </div>
-                <p className="text-[12px] font-medium leading-[120%] tracking-[-0.02em] text-[#CCCCCC] mb-[20px]">
+                <p className="mb-[20px] text-[12px] leading-[120%] font-medium tracking-[-0.02em] text-[#CCCCCC]">
                   {TESTIMONIALS[currentIndex].author}
                 </p>
               </motion.blockquote>
@@ -105,11 +110,11 @@ export default function TestimonialSlider() {
                   setCurrentIndex(index);
                 }}
                 className={classNames(
-                  "h-1 rounded-full transition-all duration-300 cursor-pointer",
+                  "h-1 cursor-pointer rounded-full transition-all duration-300",
                   {
-                    "bg-[#0D8AF2] w-[26px] h-[4px]": index === currentIndex,
-                    "bg-[#0D8AF2]/15 w-[26px] h-[4px]": index !== currentIndex,
-                  }
+                    "h-[4px] w-[26px] bg-[#0D8AF2]": index === currentIndex,
+                    "h-[4px] w-[26px] bg-[#0D8AF2]/15": index !== currentIndex,
+                  },
                 )}
               />
             ))}

@@ -3,8 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/shared/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/shared/components/ui/sheet";
-import { Avatar, AvatarFallback, AvatarImage } from "@/shared/components/ui/avatar";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/shared/components/ui/sheet";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/shared/components/ui/avatar";
 import {
   Home,
   Rocket,

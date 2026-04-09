@@ -9,7 +9,7 @@ import { useAuthStore } from "@/app/store/authStore";
 export default function Header() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
-  const isLoggedIn = useAuthStore((s) => s.isLoggedIn)
+  const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
 
   const handleLogin = () => {
     router.push("/login");
@@ -50,9 +50,11 @@ export default function Header() {
               {link.title}
             </button>
           ))}
-          {!isLoggedIn && (<Button onClick={handleLogin} size="sm" className="cursor-pointer">
-            Login
-          </Button>)}
+          {!isLoggedIn && (
+            <Button onClick={handleLogin} size="sm" className="cursor-pointer">
+              Login
+            </Button>
+          )}
 
           <Button
             onClick={handleDashboard}
@@ -87,9 +89,11 @@ export default function Header() {
                 {link.title}
               </button>
             ))}
-            {!isLoggedIn && (<Button onClick={handleLogin} size="sm" className="mt-2 w-full">
-              Login
-            </Button>)}
+            {!isLoggedIn && (
+              <Button onClick={handleLogin} size="sm" className="mt-2 w-full">
+                Login
+              </Button>
+            )}
 
             <Button onClick={handleDashboard} size="sm" className="mt-2 w-full">
               Dashboard

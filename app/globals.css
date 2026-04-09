@@ -145,14 +145,14 @@
 }
 
 @layer components {
-.btn-cta {
-    @apply bg-[#0D8AF2] py-3 px-10 rounded-2xl font-bold text-white transition-all duration-200;
+  .btn-cta {
+    @apply rounded-2xl bg-[#0D8AF2] px-10 py-3 font-bold text-white transition-all duration-200;
 
-    box-shadow: 
-      0px 2px 3px 0px #0D8AF229,
-      0px 6px 6px 0px #0D8AF224,
-      0px 14px 8px 0px #0D8AF214,
-      0px 24px 10px 0px #0D8AF205,
-      0px 38px 11px 0px #0D8AF200;
+    box-shadow:
+      0px 2px 3px 0px #0d8af229,
+      0px 6px 6px 0px #0d8af224,
+      0px 14px 8px 0px #0d8af214,
+      0px 24px 10px 0px #0d8af205,
+      0px 38px 11px 0px #0d8af200;
   }
 }

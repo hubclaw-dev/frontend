@@ -8,17 +8,20 @@ const STEPS = [
   {
     title: "Creating",
     description: "Say hello. Tell it what matters.",
-    subtext: "Your first message sets everything in motion. Tell it what you’re working on, what you want tracked, what you hate dealing with. It listens. Then it starts.",
+    subtext:
+      "Your first message sets everything in motion. Tell it what you’re working on, what you want tracked, what you hate dealing with. It listens. Then it starts.",
   },
   {
     title: "Connecting",
     description: "It starts connecting the dots.",
-    subtext: "Your AI begins linking your tools, data, and workflows. It quietly builds connections so everything works together seamlessly.",
+    subtext:
+      "Your AI begins linking your tools, data, and workflows. It quietly builds connections so everything works together seamlessly.",
   },
   {
     title: "Working",
     description: "It’s already working for you.",
-    subtext: "Now it runs in the background — tracking, summarizing, notifying. You just focus on what matters.",
+    subtext:
+      "Now it runs in the background — tracking, summarizing, notifying. You just focus on what matters.",
   },
 ];
 
@@ -38,39 +41,39 @@ export function ThreeSteps() {
 
     if (info.offset.x > swipeThreshold || info.velocity.x > velocityThreshold) {
       paginate(-1);
-    } else if (info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold) {
+    } else if (
+      info.offset.x < -swipeThreshold ||
+      info.velocity.x < -velocityThreshold
+    ) {
       paginate(1);
     }
   };
 
-
-
   return (
-    <div className="px-[16px] mb-[50px]">
-      <div className="text-center flex flex-col gap-[24px] mb-[40px]">
-        <p className="text-[32px] leading-[100%] tracking-[-0.06em] font-medium"><span className="text-[#CCCCCC]">Three steps</span><br />Then it's just - working</p>
+    <div className="mb-[50px] px-[16px]">
+      <div className="mb-[40px] flex flex-col gap-[24px] text-center">
+        <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em]">
+          <span className="text-[#CCCCCC]">Three steps</span>
+          <br />
+          Then it's just - working
+        </p>
       </div>
       <div>
-        <div className="flex justify-center align-center gap-[4px] text-[16px] font-medium text-[#CCCCCC]">
-          <div className="pt-[8px] pb-[18px] px-[24px]">
-            Creating
-          </div>
-          <div className="pt-[8px] pb-[18px] px-[24px]">
-            Connecting
-          </div>
-          <div className="pt-[8px] pb-[18px] px-[24px]">
-            Working
-          </div>
+        <div className="align-center flex justify-center gap-[4px] text-[16px] font-medium text-[#CCCCCC]">
+          <div className="px-[24px] pt-[8px] pb-[18px]">Creating</div>
+          <div className="px-[24px] pt-[8px] pb-[18px]">Connecting</div>
+          <div className="px-[24px] pt-[8px] pb-[18px]">Working</div>
         </div>
-        <div className="flex align-center justify-center mb-[40px]">
-
+        <div className="align-center mb-[40px] flex justify-center">
           <div className="flex flex-col justify-between">
-
             {/* Progress Bar — width 228px*/}
-            <div className="flex justify-center mb-[16px]">
-              <div className="flex items-center max-w-[228px] w-full mx-auto">
+            <div className="mb-[16px] flex justify-center">
+              <div className="mx-auto flex w-full max-w-[228px] items-center">
                 {STEPS.map((step, index) => (
-                  <div key={index} className="flex items-center flex-1 last:flex-none">
+                  <div
+                    key={index}
+                    className="flex flex-1 items-center last:flex-none"
+                  >
                     {/* Dot */}
                     <div
                       onClick={() => {
@@ -79,10 +82,10 @@ export function ThreeSteps() {
                         setCurrentStep(index);
                       }}
                       className={classNames(
-                        "w-2 h-2 rounded-full transition-all duration-300 cursor-pointer z-10",
+                        "z-10 h-2 w-2 cursor-pointer rounded-full transition-all duration-300",
                         index <= currentStep
                           ? "bg-[#0D8AF2]"
-                          : "bg-[#0D8AF2]/15"
+                          : "bg-[#0D8AF2]/15",
                       )}
                     />
 
@@ -90,8 +93,10 @@ export function ThreeSteps() {
                     {index < STEPS.length - 1 && (
                       <div
                         className={classNames(
-                          "flex-1 h-[4px] transition-all duration-300",
-                          index <= currentStep - 1 ? "bg-[#0D8AF2]" : "bg-[#0D8AF2]/15"
+                          "h-[4px] flex-1 transition-all duration-300",
+                          index <= currentStep - 1
+                            ? "bg-[#0D8AF2]"
+                            : "bg-[#0D8AF2]/15",
                         )}
                       />
                     )}
@@ -115,9 +120,13 @@ export function ThreeSteps() {
                     dragConstraints={{ left: 0, right: 0 }}
                     dragElastic={0.2}
                     onDragEnd={handleDragEnd}
-                    className="cursor-grab active:cursor-grabbing touch-pan-y select-none"
+                    className="cursor-grab touch-pan-y select-none active:cursor-grabbing"
                   >
-                    <SeeInActionBlock title={STEPS[currentStep].description} desc={STEPS[currentStep].subtext} height={275} />
+                    <SeeInActionBlock
+                      title={STEPS[currentStep].description}
+                      desc={STEPS[currentStep].subtext}
+                      height={275}
+                    />
                   </motion.div>
                 </AnimatePresence>
               </div>
@@ -125,11 +134,10 @@ export function ThreeSteps() {
           </div>
         </div>
 
-        <div className="flex justify-center ">
+        <div className="flex justify-center">
           <CTAButton text="Create your agent now" />
         </div>
-
       </div>
     </div>
-  )
+  );
 }

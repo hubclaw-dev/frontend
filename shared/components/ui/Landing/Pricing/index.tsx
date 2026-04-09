@@ -1,5 +1,10 @@
 import { Button } from "@/shared/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/shared/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardContent,
+} from "@/shared/components/ui/card";
 import {
   Accordion,
   AccordionItem,
@@ -82,8 +87,9 @@ export default function PricingSection(props: { id: string }) {
           {plans.map((plan, idx) => (
             <Card
               key={idx}
-              className={`flex flex-col justify-between border p-6 transition-shadow hover:shadow-lg ${plan.title.includes("PRO") ? "border-primary" : ""
-                }`}
+              className={`flex flex-col justify-between border p-6 transition-shadow hover:shadow-lg ${
+                plan.title.includes("PRO") ? "border-primary" : ""
+              }`}
             >
               <CardHeader className="pb-4">
                 <CardTitle className="text-xl font-bold">
