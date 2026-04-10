@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function TryFreeHeroSection() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-[32px] my-[50px] px-[16px] md:px-[20px] lg:my-[64px] lg:max-w-[1520px] lg:mx-auto">
+    <div className="my-[50px] grid grid-cols-1 px-[16px] md:grid-cols-2 md:gap-[32px] md:px-[20px] lg:mx-auto lg:my-[64px] lg:max-w-[1520px]">
       <div className="grid-col block grid place-items-center md:place-items-start">
         <div className="mb-[16px] flex gap-4">
           <Image
@@ -23,18 +23,19 @@ export function TryFreeHeroSection() {
         </div>
 
         <div className="mb-[32px] text-center md:text-left">
-          <p className="text-[40px] leading-[100%] font-medium tracking-[-0.06em] md:text-[44px] lg:text-[54px] 3xl:text-[96px]">
+          <p className="3xl:text-[96px] text-[40px] leading-[100%] font-medium tracking-[-0.06em] md:text-[44px] lg:text-[54px]">
             <span className="font-medium text-[#CCCCCC]">
               Chatbots just talk <br />
-            </span>Your agent gets things <span className="text-[#0188FD]">done</span>
+            </span>
+            Your agent gets things <span className="text-[#0188FD]">done</span>
           </p>
         </div>
 
         <div className="mb-[32px] text-center md:text-left">
-          <p className="text-[12px] text-[#808080] lg:text-[14px] 3xl:text-[20px]">
+          <p className="3xl:text-[20px] text-[12px] text-[#808080] lg:text-[14px]">
             HubClaw agents work on their own - researching, deciding, executing.
-            You brief them once in Telegram. They handle the rest. No prompts. No
-            babysitting. No technical setup
+            You brief them once in Telegram. They handle the rest. No prompts.
+            No babysitting. No technical setup
           </p>
         </div>
 
@@ -48,17 +49,15 @@ export function TryFreeHeroSection() {
 
       <VideoBlock />
     </div>
-
   );
 }
 
 function VideoBlock() {
-
   return (
-    <div className="my-[50px] md:my-[0px] border border-1 border-[#F0F0F0] rounded-[16px] w-[328px] h-[300px] md:w-full md:h-full mx-auto flex items-center justify-center">
+    <div className="mx-auto my-[50px] flex h-[300px] w-[328px] items-center justify-center rounded-[16px] border border-1 border-[#F0F0F0] md:my-[0px] md:h-full md:w-full">
       <div className="">
         <CTAButton text="Create New Agent" />
       </div>
     </div>
-  )
+  );
 }

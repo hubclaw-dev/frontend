@@ -50,31 +50,39 @@ export function ThreeSteps() {
   };
 
   return (
-    <div className="mb-[50px] px-[16px] lg:mb-[64px] 3xl:mb-[100px]">
-
-      <div className="mb-[40px] flex flex-col gap-[24px] text-center lg:text-left lg:flex-row lg:justify-between lg:max-w-[1520px] lg:mx-auto lg:mb-[60px] 3xl:mb-[64px]">
+    <div className="3xl:mb-[100px] mb-[50px] px-[16px] lg:mb-[64px]">
+      <div className="3xl:mb-[64px] mb-[40px] flex flex-col gap-[24px] text-center lg:mx-auto lg:mb-[60px] lg:max-w-[1520px] lg:flex-row lg:justify-between lg:text-left">
         <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em] md:text-[36px] lg:text-[40px]">
           <span className="text-[#CCCCCC]">Three steps</span>
           <br />
           Then it&apos;s just - working
         </p>
 
-        <div className="flex mt-auto hidden lg:block">
-          <CTAButton text="Create your agent now" classNames="lg:px-[48px] lg:py-[16px]" />
+        <div className="mt-auto flex hidden lg:block">
+          <CTAButton
+            text="Create your agent now"
+            classNames="lg:px-[48px] lg:py-[16px]"
+          />
         </div>
       </div>
 
       <div>
-        <div className="align-center flex justify-center gap-[4px] text-[16px] font-medium text-[#CCCCCC] block lg:hidden">
-          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">Creating</div>
-          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">Connecting</div>
-          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">Working</div>
+        <div className="align-center block flex justify-center gap-[4px] text-[16px] font-medium text-[#CCCCCC] lg:hidden">
+          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">
+            Creating
+          </div>
+          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">
+            Connecting
+          </div>
+          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">
+            Working
+          </div>
         </div>
-        <div className="align-center mb-[40px] flex justify-center block lg:hidden">
-          <div className="flex flex-col justify-between ">
+        <div className="align-center mb-[40px] block flex justify-center lg:hidden">
+          <div className="flex flex-col justify-between">
             {/* Progress Bar */}
-            <div className="mb-[16px] flex justify-center block lg:hidden">
-              <div className="mx-auto flex w-full items-center max-w-[228px] md:max-w-[484px] lg:max-w-[666px]">
+            <div className="mb-[16px] block flex justify-center lg:hidden">
+              <div className="mx-auto flex w-full max-w-[228px] items-center md:max-w-[484px] lg:max-w-[666px]">
                 {STEPS.map((_, index) => (
                   <div
                     key={index}
@@ -138,12 +146,10 @@ export function ThreeSteps() {
                 </AnimatePresence>
               </div>
             </div>
-
-
           </div>
         </div>
 
-        <div className="flex justify-center block lg:hidden">
+        <div className="block flex justify-center lg:hidden">
           <CTAButton text="Create your agent now" />
         </div>
       </div>
@@ -154,10 +160,9 @@ export function ThreeSteps() {
 }
 
 function ThreeStepsBlock() {
-
   return (
     <div className="hidden lg:block">
-      <div className="grid grid-cols-3 lg:max-w-[1520] gap-[16px] mx-auto">
+      <div className="mx-auto grid grid-cols-3 gap-[16px] lg:max-w-[1520]">
         {STEPS.map((step, index) => (
           <SeeInActionBlock
             key={index}
@@ -169,5 +174,5 @@ function ThreeStepsBlock() {
         ))}
       </div>
     </div>
-  )
+  );
 }

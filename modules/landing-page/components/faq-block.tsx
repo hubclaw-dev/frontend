@@ -33,7 +33,7 @@ const FAQ_ITEMS = [
 
 export function FaqBlock() {
   return (
-    <div className="mb-[50px] px-[16px] lg:mb-[64px] lg:mx-auto lg:max-w-[1200px] 3xl:mb-[100px]">
+    <div className="3xl:mb-[100px] mb-[50px] px-[16px] lg:mx-auto lg:mb-[64px] lg:max-w-[1200px]">
       <div className="mb-[40px] flex flex-col gap-[24px] text-center">
         <p className="text-[24px] leading-[100%] font-medium tracking-[-0.06em] lg:text-[32px]">
           FAQ
