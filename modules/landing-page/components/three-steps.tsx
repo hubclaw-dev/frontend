@@ -50,26 +50,32 @@ export function ThreeSteps() {
   };
 
   return (
-    <div className="mb-[50px] px-[16px]">
-      <div className="mb-[40px] flex flex-col gap-[24px] text-center">
-        <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em]">
+    <div className="mb-[50px] px-[16px] lg:mb-[64px] 3xl:mb-[100px]">
+
+      <div className="mb-[40px] flex flex-col gap-[24px] text-center lg:text-left lg:flex-row lg:justify-between lg:max-w-[1520px] lg:mx-auto lg:mb-[60px] 3xl:mb-[64px]">
+        <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em] md:text-[36px] lg:text-[40px]">
           <span className="text-[#CCCCCC]">Three steps</span>
           <br />
           Then it&apos;s just - working
         </p>
-      </div>
-      <div>
-        <div className="align-center flex justify-center gap-[4px] text-[16px] font-medium text-[#CCCCCC]">
-          <div className="px-[24px] pt-[8px] pb-[18px]">Creating</div>
-          <div className="px-[24px] pt-[8px] pb-[18px]">Connecting</div>
-          <div className="px-[24px] pt-[8px] pb-[18px]">Working</div>
+
+        <div className="flex mt-auto hidden lg:block">
+          <CTAButton text="Create your agent now" classNames="lg:px-[48px] lg:py-[16px]" />
         </div>
-        <div className="align-center mb-[40px] flex justify-center">
-          <div className="flex flex-col justify-between">
-            {/* Progress Bar — width 228px*/}
-            <div className="mb-[16px] flex justify-center">
-              <div className="mx-auto flex w-full max-w-[228px] items-center">
-                {STEPS.map((step, index) => (
+      </div>
+
+      <div>
+        <div className="align-center flex justify-center gap-[4px] text-[16px] font-medium text-[#CCCCCC] block lg:hidden">
+          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">Creating</div>
+          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">Connecting</div>
+          <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">Working</div>
+        </div>
+        <div className="align-center mb-[40px] flex justify-center block lg:hidden">
+          <div className="flex flex-col justify-between ">
+            {/* Progress Bar */}
+            <div className="mb-[16px] flex justify-center block lg:hidden">
+              <div className="mx-auto flex w-full items-center max-w-[228px] md:max-w-[484px] lg:max-w-[666px]">
+                {STEPS.map((_, index) => (
                   <div
                     key={index}
                     className="flex flex-1 items-center last:flex-none"
@@ -106,7 +112,7 @@ export function ThreeSteps() {
             </div>
 
             {/* slider with content */}
-            <div className="">
+            <div className="block lg:hidden">
               <div className="relative z-10">
                 <AnimatePresence custom={direction} mode="wait">
                   <motion.div
@@ -126,18 +132,42 @@ export function ThreeSteps() {
                       title={STEPS[currentStep].description}
                       desc={STEPS[currentStep].subtext}
                       height={275}
+                      threeSteps={true}
                     />
                   </motion.div>
                 </AnimatePresence>
               </div>
             </div>
+
+
           </div>
         </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center block lg:hidden">
           <CTAButton text="Create your agent now" />
         </div>
       </div>
+
+      <ThreeStepsBlock />
     </div>
   );
+}
+
+function ThreeStepsBlock() {
+
+  return (
+    <div className="hidden lg:block">
+      <div className="grid grid-cols-3 lg:max-w-[1520] gap-[16px] mx-auto">
+        {STEPS.map((step, index) => (
+          <SeeInActionBlock
+            key={index}
+            title={step.description}
+            desc={step.subtext}
+            height={275}
+            threeSteps={true}
+          />
+        ))}
+      </div>
+    </div>
+  )
 }

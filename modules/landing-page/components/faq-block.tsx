@@ -33,9 +33,9 @@ const FAQ_ITEMS = [
 
 export function FaqBlock() {
   return (
-    <div className="mb-[50px] px-[16px] lg:mx-auto lg:max-w-[1200px]">
+    <div className="mb-[50px] px-[16px] lg:mb-[64px] lg:mx-auto lg:max-w-[1200px] 3xl:mb-[100px]">
       <div className="mb-[40px] flex flex-col gap-[24px] text-center">
-        <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em]">
+        <p className="text-[24px] leading-[100%] font-medium tracking-[-0.06em] lg:text-[32px]">
           FAQ
         </p>
       </div>
@@ -51,10 +51,10 @@ export function FaqBlock() {
             value={item.id}
             className="border-border bg-card rounded-xl border p-[16px]"
           >
-            <AccordionTrigger className="text-left text-[16px] font-medium hover:no-underline">
+            <AccordionTrigger className="text-left text-[16px] font-medium hover:no-underline lg:text-[18px]">
               {item.question}
             </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground h-fit text-[14px]">
+            <AccordionContent className="text-muted-foreground h-fit text-[14px] lg:text-[16px]">
               {item.answer}
             </AccordionContent>
           </AccordionItem>

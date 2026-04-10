@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { LandingPage } from "@/modules/landing-page/lading-page";
+import { LandingPage } from "@/modules/landing-page/landing-page";
 
 // TODO: create a hook
 function ScrollHandler() {
