@@ -38,21 +38,21 @@ const LEARN_BLOCKS = [
 
 export function LearnTheRest() {
   return (
-    <div className="px-[16px]">
-      <div className="mb-[40px] flex flex-col gap-[24px] text-center">
-        <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em]">
+    <div className="3xl:max-w-[1520px] 3xl:mx-auto px-[16px]">
+      <div className="3xl:flex-row 3xl:justify-between mb-[40px] flex flex-col gap-[24px] text-center lg:mb-[64px]">
+        <p className="3xl:text-[64px] 3xl:text-left text-[32px] leading-[100%] font-medium tracking-[-0.06em] md:text-[36px] lg:text-[40px]">
           <span className="text-[#CCCCCC]">Does almost anything</span>
           <br />
           Learns the rest
         </p>
-        <p className="text-[12px] leading-[120%] font-medium tracking-[-0.02em] text-[#808080]">
+        <p className="3xl:text-[20px] 3xl:mx-0 3xl:mt-auto 3xl:text-right 3xl:w-[720px] text-[12px] leading-[120%] font-medium tracking-[-0.02em] text-[#808080] md:mx-auto md:w-[460px] lg:w-[600px] lg:text-[14px]">
           HubClaw comes with a Skills Hub - a growing library of capabilities
           your agent can tap into. Brief it on a goal. It finds what it needs to
           get there on its own.
         </p>
       </div>
 
-      <div className="mb-[40px] grid grid-cols-1 gap-[16px] md:grid-cols-2 lg:mx-auto lg:max-w-[1520px] lg:grid-cols-4">
+      <div className="3xl:mb-[96px] 3xl:h-[253px] mb-[40px] grid grid-cols-1 gap-[16px] md:grid-cols-2 lg:mx-auto lg:mb-[64px] lg:max-w-[1520px] lg:grid-cols-4">
         {LEARN_BLOCKS.map((block) => (
           <LearnBlock
             key={block.id}
@@ -64,14 +64,17 @@ export function LearnTheRest() {
         ))}
       </div>
 
-      <div className="mb-[40px] text-center text-[12px] leading-[160%] font-medium tracking-[-0.02em] text-[#B3B3B3]">
+      <div className="3xl:max-w-[504px] 3xl:text-[16px] mb-[40px] text-center text-[12px] leading-[160%] font-medium tracking-[-0.02em] text-[#B3B3B3] md:mx-auto md:max-w-[460px] lg:mb-[32px] lg:max-w-[600px] lg:text-[14px]">
         There&apos;s a Skills Hub with hundreds of capabilities - and it keeps
         growing. If your agent doesn&apos;t know how to do something, it finds a
         way to learn
       </div>
 
       <div className="mb-[100px] flex justify-center">
-        <CTAButton text="Explore all skills" />
+        <CTAButton
+          text="Explore all skills"
+          classNames="text-[14px] lg:text-[20px] lg:py-[16px] lg:px-[48px] lg:rounded-[16px]"
+        />
       </div>
     </div>
   );

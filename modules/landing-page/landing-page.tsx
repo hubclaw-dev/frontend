@@ -17,6 +17,7 @@ export function LandingPage() {
       <ThreeSteps />
       <FaqBlock />
       <TestimonialSlider />
+      <FreeTrialBlock />
       <Footer />
     </div>
   );

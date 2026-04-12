@@ -1,25 +1,34 @@
 import classNames from "classnames";
 import { AnimatePresence, motion, PanInfo } from "motion/react";
 import { useState } from "react";
-import { SeeInActionBlock } from "./see-in-action-block";
+import { SeeInActionBlockThreeSteps } from "./see-in-action-block";
 import { CTAButton } from "@/shared/components/ui/Button/cta-button";
+import ConnectImage from "../images/three-steps/connect-img.svg";
+import CreatingImage from "../images/three-steps/create-img.svg";
+import WorkingImage from "../images/three-steps/say-hello-img.svg";
 
 const STEPS = [
   {
+    id: 1,
     title: "Creating",
     description: "Say hello. Tell it what matters.",
+    image: CreatingImage,
     subtext:
       "Your first message sets everything in motion. Tell it what you’re working on, what you want tracked, what you hate dealing with. It listens. Then it starts.",
   },
   {
+    id: 2,
     title: "Connecting",
     description: "It starts connecting the dots.",
+    image: ConnectImage,
     subtext:
       "Your AI begins linking your tools, data, and workflows. It quietly builds connections so everything works together seamlessly.",
   },
   {
+    id: 3,
     title: "Working",
     description: "It’s already working for you.",
+    image: WorkingImage,
     subtext:
       "Now it runs in the background — tracking, summarizing, notifying. You just focus on what matters.",
   },
@@ -136,11 +145,11 @@ export function ThreeSteps() {
                     onDragEnd={handleDragEnd}
                     className="cursor-grab touch-pan-y select-none active:cursor-grabbing"
                   >
-                    <SeeInActionBlock
+                    <SeeInActionBlockThreeSteps
                       title={STEPS[currentStep].description}
                       desc={STEPS[currentStep].subtext}
-                      height={275}
-                      threeSteps={true}
+                      className="h-[275px] md:h-[337px]"
+                      image={STEPS[currentStep].image}
                     />
                   </motion.div>
                 </AnimatePresence>
@@ -160,16 +169,65 @@ export function ThreeSteps() {
 }
 
 function ThreeStepsBlock() {
+  const [currentStep, setCurrentStep] = useState(0);
+
   return (
     <div className="hidden lg:block">
+      <div className="align-center block flex justify-center gap-[4px] text-[16px] font-medium text-[#CCCCCC]">
+        <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">
+          Creating
+        </div>
+        <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">
+          Connecting
+        </div>
+        <div className="px-[24px] pt-[8px] pb-[18px] md:px-[88px] lg:px-[131px]">
+          Working
+        </div>
+      </div>
+      <div className="mb-[16px] block flex justify-center lg:mb-[48px]">
+        <div className="mx-auto flex w-full max-w-[228px] items-center md:max-w-[484px] lg:max-w-[666px]">
+          {STEPS.map((_, index) => (
+            <div
+              key={index}
+              className="flex flex-1 items-center last:flex-none"
+            >
+              {/* Dot */}
+              <div
+                onClick={() => {
+                  setCurrentStep(index);
+                }}
+                className={classNames(
+                  "z-10 h-2 w-2 cursor-pointer rounded-full transition-all duration-300",
+                  index <= currentStep ? "bg-[#0D8AF2]" : "bg-[#0D8AF2]/15",
+                )}
+              />
+
+              {/* Line between dots */}
+              {index < STEPS.length - 1 && (
+                <div
+                  className={classNames(
+                    "h-[4px] flex-1 transition-all duration-300",
+                    index <= currentStep - 1
+                      ? "bg-[#0D8AF2]"
+                      : "bg-[#0D8AF2]/15",
+                  )}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="mx-auto grid grid-cols-3 gap-[16px] lg:max-w-[1520]">
         {STEPS.map((step, index) => (
-          <SeeInActionBlock
+          <SeeInActionBlockThreeSteps
             key={index}
+            className="lg:mx-auto lg:max-w-full"
             title={step.description}
             desc={step.subtext}
-            height={275}
-            threeSteps={true}
+            image={step.image}
+            isSelected={index === currentStep}
+            onCardClick={() => setCurrentStep(index)}
           />
         ))}
       </div>

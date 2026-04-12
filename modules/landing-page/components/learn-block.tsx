@@ -26,10 +26,10 @@ export function LearnBlock(props: Props) {
         />
       </div>
       <div>
-        <div className="mb-[2px] text-[18px] leading-[120%] font-medium tracking-[-0.02em]">
+        <div className="3xl:text-[24px] mb-[2px] text-[18px] leading-[120%] font-medium tracking-[-0.02em]">
           {title}
         </div>
-        <div className="font-regular text-[12px] leading-[120%] tracking-[-0.02em] text-[#999999]">
+        <div className="font-regular 3xl:text-[16px] text-[12px] leading-[120%] tracking-[-0.02em] text-[#999999]">
           {desc}
         </div>
       </div>
