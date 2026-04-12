@@ -59,9 +59,9 @@ export function ThreeSteps() {
   };
 
   return (
-    <div className="3xl:mb-[100px] mb-[50px] px-[16px] lg:mb-[64px]">
+    <div className="3xl:mb-[100px] 3xl:pt-[100px] mb-[50px] px-[16px] lg:mb-[64px]">
       <div className="3xl:mb-[64px] mb-[40px] flex flex-col gap-[24px] text-center lg:mx-auto lg:mb-[60px] lg:max-w-[1520px] lg:flex-row lg:justify-between lg:text-left">
-        <p className="text-[32px] leading-[100%] font-medium tracking-[-0.06em] md:text-[36px] lg:text-[40px]">
+        <p className="3xl:text-[64px] text-[32px] leading-[100%] font-medium tracking-[-0.06em] md:text-[36px] lg:text-[40px]">
           <span className="text-[#CCCCCC]">Three steps</span>
           <br />
           Then it&apos;s just - working

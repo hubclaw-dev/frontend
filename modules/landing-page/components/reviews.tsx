@@ -48,15 +48,15 @@ export default function TestimonialSlider() {
   };
 
   return (
-    <div className="mb-[50px] px-[16px] lg:mx-auto lg:mb-[100px] lg:max-w-[1520px]">
+    <div className="3xl:pt-[100px] mb-[50px] px-[16px] lg:mx-auto lg:mb-[100px] lg:max-w-[1520px]">
       <div className="relative rounded-[16px] border border-[#EDEDED]">
-        {/* <Image
+        <Image
           src={TestimonialsBg}
           alt="background"
           fill
-          className="rounded-[16px] object-none scale-[0.6] "
+          className="rounded-[16px] object-cover"
           priority={false}
-        /> */}
+        />
         <div className="relative z-10">
           {/* Heading */}
           <div className="3xl:pb-[96px] 3xl:pt-[48px] pt-[24px] pb-[40px] text-center md:pb-[48px] lg:pb-[64px]">

@@ -27,7 +27,7 @@ const SECTION_BLOCKS = [
 
 export function SeeInActionSection() {
   return (
-    <div className="3xl:max-w-[1520px] 3xl:mx-auto mb-[100px] px-[16px]">
+    <div className="3xl:max-w-[1520px] 3xl:mx-auto 3xl:pt-[100px] mb-[100px] px-[16px]">
       <div className="mb-[40px] block text-center text-[32px] leading-[100%] font-medium tracking-[-0.06em] md:hidden">
         <span className="text-[#CCCCCC]">
           Every day, <br /> you&apos;re doing work that
