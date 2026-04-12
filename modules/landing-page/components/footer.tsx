@@ -37,7 +37,7 @@ const DOC_BLOCK = [
 export function Footer() {
   return (
     <div className="px-[16px] md:px-[24px]">
-      <div className="pt-[50px] md:grid-cols-2 md:gap-[16px] lg:mx-auto lg:grid lg:max-w-[1520px]">
+      <div className="pt-[50px] md:grid-cols-2 md:gap-[16px] lg:mx-auto lg:grid lg:max-w-[1520px] lg:pt-[96px]">
         <div className="3xl:gap-[16px] mb-[40px] grid grid-cols-2 gap-[8px] lg:grid-cols-1 lg:gap-[109px]">
           <div className="align-center flex items-center">
             <Image
