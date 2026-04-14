@@ -15,6 +15,7 @@ export function LandingPage() {
       <SeeInActionSection />
       <LearnTheRest />
       <ThreeSteps />
+      <PricesBlock />
       <FaqBlock />
       <TestimonialSlider />
       <FreeTrialBlock />

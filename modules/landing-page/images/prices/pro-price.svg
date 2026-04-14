@@ -1,0 +1,13 @@
+<svg width="381" height="140" viewBox="0 0 381 140" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="482" height="177" rx="12" fill="white" fill-opacity="0.15"/>
+<rect width="482" height="177" rx="12" fill="url(#pattern0_538_9050)" fill-opacity="0.7"/>
+<defs>
+<pattern id="pattern0_538_9050" patternUnits="userSpaceOnUse" patternTransform="matrix(53.1456 0 0 26.5728 0 0)" preserveAspectRatio="none" viewBox="0 0 83.04 41.52" width="1" height="1">
+<use xlink:href="#pattern0_538_9050_inner" transform="translate(0 -41.52)"/>
+<use xlink:href="#pattern0_538_9050_inner" transform="translate(41.52 -20.76)"/>
+<g id="pattern0_538_9050_inner">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.03795 1.61758C8.19995 1.25258 8.56095 1.01758 8.96095 1.01758L16.9379 1.01758C17.6879 1.01758 18.1769 1.80758 17.8409 2.47958L15.5719 7.01758H18.9299C19.8299 7.01758 20.2799 8.10558 19.6439 8.74158L7.69095 20.6946C6.93695 21.4486 5.68095 20.6726 6.01895 19.6616L8.56695 12.0176H4.96895C4.80069 12.0176 4.6351 11.9755 4.48722 11.8953C4.33934 11.815 4.21385 11.6991 4.12216 11.558C4.03046 11.4169 3.97546 11.2552 3.96215 11.0875C3.94884 10.9197 3.97764 10.7513 4.04595 10.5976L8.03795 1.61758Z" fill="#AED8FB"/>
+</g>
+<use xlink:href="#pattern0_538_9050_inner" transform="translate(41.52 20.76)"/>
+</pattern></defs>
+</svg>
