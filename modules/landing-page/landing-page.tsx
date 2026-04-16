@@ -9,13 +9,17 @@ import { FreeTrialBlock } from "./components/free-trials-block";
 import { Footer } from "./components/footer";
 import TestimonialSlider from "./components/reviews";
 import { PricesBlock } from "./components/prices-block";
-import { useScrollToSection } from "@/shared/hooks/useScrollToSection";
+import { ScrollToSection } from "./components/scroll-component";
+import { Suspense } from "react";
 
 export function LandingPage() {
-  useScrollToSection();
 
   return (
     <div className="max-h-screen w-full overflow-x-hidden overscroll-x-none">
+      <Suspense fallback={null}>
+        <ScrollToSection />
+      </Suspense>
+
       <TryFreeHeroSection id="hero" />
       <SeeInActionSection id="use-cases" />
       <LearnTheRest id="how-it-works" />
