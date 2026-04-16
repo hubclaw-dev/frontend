@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import {
   Carousel,
@@ -11,6 +13,10 @@ import ProBg from "../images/prices/pro-price.svg";
 import MaxBg from "../images/prices/max-price.svg";
 import Image from "next/image";
 import { CTAButton } from "@/shared/components/ui/Button/cta-button";
+
+interface Props {
+  id?: string;
+}
 
 type PriceRange = "monthly" | "yearly";
 
@@ -77,11 +83,15 @@ const PRICES = [
   },
 ];
 
-export function PricesBlock() {
+export function PricesBlock(props: Props) {
+  const { id } = props;
   const [priceRange, setPriceRange] = useState<PriceRange>("yearly");
 
   return (
-    <div className="3xl:max-w-[1200px] 3xl:mx-auto 3xl:pb-[96px] pb-[40px] lg:pb-[64px]">
+    <div
+      id={id}
+      className="3xl:max-w-[1200px] 3xl:mx-auto 3xl:pb-[96px] pb-[40px] lg:pb-[64px]"
+    >
       <h2 className="3xl:pt-[100px] 3xl:text-[64px] mb-[40px] pt-[50px] pr-[16px] text-center text-[32px] leading-[100%] font-medium tracking-[-0.06em] md:text-[36px] lg:mb-[64px] lg:text-[40px]">
         Free to start
       </h2>
@@ -167,7 +177,7 @@ export function PricesBlock() {
               crossedPrice={item.crossedPrice}
               list={item.list}
               button={item.button}
-              className="py-0 md:h-full md:w-[229px]"
+              className="py-0 md:h-full md:w-[229px] lg:mx-auto"
               priceRange={priceRange}
             />
           ))}

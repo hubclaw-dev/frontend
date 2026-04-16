@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import { AnimatePresence, motion, PanInfo } from "motion/react";
 import { useState } from "react";

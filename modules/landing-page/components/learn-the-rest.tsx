@@ -5,6 +5,10 @@ import CodeSign from "../images/code-sign.png";
 import { LearnBlock } from "./learn-block";
 import { CTAButton } from "@/shared/components/ui/Button/cta-button";
 
+interface Props {
+  id?: string;
+}
+
 const LEARN_BLOCKS = [
   {
     id: 1,
@@ -36,9 +40,14 @@ const LEARN_BLOCKS = [
   },
 ];
 
-export function LearnTheRest() {
+export function LearnTheRest(props: Props) {
+  const { id } = props;
+
   return (
-    <div className="3xl:max-w-[1520px] 3xl:mx-auto 3xl:pt-[100px] px-[16px]">
+    <div
+      id={id}
+      className="3xl:max-w-[1520px] 3xl:mx-auto 3xl:pt-[100px] px-[16px]"
+    >
       <div className="3xl:flex-row 3xl:justify-between mb-[40px] flex flex-col gap-[24px] text-center lg:mb-[64px]">
         <p className="3xl:text-[64px] 3xl:text-left text-[32px] leading-[100%] font-medium tracking-[-0.06em] md:text-[36px] lg:text-[40px]">
           <span className="text-[#CCCCCC]">Does almost anything</span>

@@ -1,13 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/shared/components/ui/button";
-import { X, Menu } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/app/store/authStore";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { CTAButton } from "../Button/cta-button";
+import Image from "next/image";
+import Logo from "@/public/logo.svg";
 
-export default function Header() {
+const NAV_LINKS = [
+  { title: "Use Cases", section: "use-cases" },
+  { title: "How it works", section: "how-it-works" },
+  { title: "Pricing", section: "pricing" },
+  { title: "FAQ", section: "faq" },
+];
+
+export function Header() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
   const isLoggedIn = useAuthStore((s) => s.isLoggedIn);
@@ -17,89 +26,86 @@ export default function Header() {
     setOpen(false);
   };
 
-  const handleDashboard = () => {
-    router.push("/dashboard");
-    setOpen(false);
-  };
-
-  const navLinks = [
-    { title: "Pricing", section: "pricing" },
-    { title: "Benefits", section: "benefits" },
-  ];
-
   const handleNavClick = (section: string) => {
     router.push(`/?section=${section}`);
     setOpen(false);
   };
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-white/70 shadow-sm backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <header className="fixed top-0 left-0 z-50 w-full px-[16px] pt-[8px] md:px-[24px] md:pt-[12px]">
+      <div
+        className={cn(
+          "mx-auto flex max-h-[48px] max-w-[1520px] items-center justify-between overflow-hidden rounded-[12px] px-[16px] py-[9px] shadow-lg backdrop-blur-lg md:max-h-[67px] md:px-[24px] md:py-[12px]",
+          open && "rounded-b-none",
+        )}
+      >
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold tracking-tight">
-          HubClaw
-        </Link>
+        <div className="h-[28px] w-[66px] lg:h-[40px] lg:w-[94px]">
+          <Link href="/" className="font-bold tracking-tight">
+            <Image src={Logo} alt="logo" />
+          </Link>
+        </div>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
+        <nav className="hidden items-center gap-[32px] lg:flex">
+          {NAV_LINKS.map((link) => (
             <button
               key={link.title}
               onClick={() => handleNavClick(link.section)}
-              className="text-muted-foreground hover:text-foreground cursor-pointer text-sm font-medium transition-colors"
+              className="text-[16px] leading-[120%] font-medium tracking-[-0.04em]"
             >
               {link.title}
             </button>
           ))}
-          {!isLoggedIn && (
-            <Button onClick={handleLogin} size="sm" className="cursor-pointer">
-              Login
-            </Button>
-          )}
-
-          <Button
-            onClick={handleDashboard}
-            size="sm"
-            className="cursor-pointer"
-          >
-            Dashboard
-          </Button>
         </nav>
 
-        {/* Mobile burger */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setOpen(!open)}
-            className="rounded-md p-2 transition hover:bg-gray-100"
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
+        <div className="flex gap-[12px]">
+          <button className="max-h-[30px] rounded-[8px] border border-[1px] border-[#0D8AF226] px-[12px] py-[8px] text-center text-[10px] leading-[100%] font-bold tracking-[-0.02em] text-[#0D8AF2] md:max-h-[43px] md:px-[40px] md:py-[12px] md:text-[14px] lg:rounded-[12px] lg:px-[24px]">
+            Try for free
           </button>
+
+          {!isLoggedIn && (
+            <button className="hidden max-h-[30px] rounded-[8px] border border-[1px] border-[#0D8AF226] px-[12px] py-[8px] text-center text-[10px] leading-[100%] font-bold tracking-[-0.02em] text-[#0D8AF2] md:max-h-[43px] md:px-[40px] md:py-[12px] md:text-[14px] lg:block lg:rounded-[12px] lg:px-[24px]">
+              Login
+            </button>
+          )}
+
+          {/* Mobile burger */}
+          <div className="flex items-center justify-center lg:hidden">
+            <button
+              className="flex h-[24px] w-[24px] items-center justify-center p-4"
+              onClick={() => setOpen(!open)}
+            >
+              <div className="grid grid-rows-3 gap-[3px]">
+                <div className="h-[2px] w-[18px] rounded-[100px] bg-[#333333]"></div>
+                <div className="h-[2px] w-[18px] rounded-[100px] bg-[#333333]"></div>
+                <div className="h-[2px] w-[18px] rounded-[100px] bg-[#333333]"></div>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile menu */}
       {open && (
-        <div className="w-full bg-white/10 shadow-sm backdrop-blur-sm md:hidden">
-          <nav className="flex flex-col gap-4 px-6 py-4">
-            {navLinks.map((link) => (
+        <div className="w-full rounded-b-[12px] shadow-lg backdrop-blur-lg lg:hidden">
+          <nav className="flex flex-col gap-4 px-[16px] py-[32px]">
+            {NAV_LINKS.map((link) => (
               <button
                 key={link.title}
                 onClick={() => handleNavClick(link.section)}
-                className="text-muted-foreground hover:text-foreground text-left text-base font-medium transition-colors"
+                className="text-[16px] leading-[120%] font-medium tracking-[-0.04em]"
               >
                 {link.title}
               </button>
             ))}
-            {!isLoggedIn && (
-              <Button onClick={handleLogin} size="sm" className="mt-2 w-full">
-                Login
-              </Button>
-            )}
-
-            <Button onClick={handleDashboard} size="sm" className="mt-2 w-full">
-              Dashboard
-            </Button>
           </nav>
+
+          {!isLoggedIn && (
+            <div className="flex w-full justify-center px-[16px] pb-[16px]">
+              <CTAButton text="Log in" classNames="text-[10px] w-full" />
+            </div>
+          )}
         </div>
       )}
     </header>

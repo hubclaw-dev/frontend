@@ -5,6 +5,10 @@ import {
   AccordionTrigger,
 } from "@/shared/components/ui/accordion";
 
+interface Props {
+  id?: string;
+}
+
 const FAQ_ITEMS = [
   {
     id: "item-1",
@@ -31,9 +35,14 @@ const FAQ_ITEMS = [
   },
 ];
 
-export function FaqBlock() {
+export function FaqBlock(props: Props) {
+  const { id } = props;
+
   return (
-    <div className="3xl:mb-[100px] xs:pt-[40px] 3xl:pt-[96px] mb-[50px] px-[16px] lg:mx-auto lg:mb-[64px] lg:max-w-[1200px] lg:pt-[64px]">
+    <div
+      id={id}
+      className="3xl:mb-[100px] xs:pt-[40px] 3xl:pt-[96px] mb-[50px] px-[16px] lg:mx-auto lg:mb-[64px] lg:max-w-[1200px] lg:pt-[64px]"
+    >
       <div className="mb-[40px] flex flex-col gap-[24px] text-center">
         <p className="text-[24px] leading-[100%] font-medium tracking-[-0.06em] lg:text-[32px]">
           FAQ
