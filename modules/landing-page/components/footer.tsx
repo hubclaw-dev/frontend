@@ -1,23 +1,28 @@
 import Link from "next/link";
 import FooterLogo from "../images/footer/logo-footer.svg";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const NAV_BLOCK = [
   {
     id: 1,
     page: "Use Cases",
+    section: "use-cases"
   },
   {
     id: 2,
     page: "How it works",
+    section: "how-it-works"
   },
   {
     id: 3,
     page: "Pricing",
+    section: "pricing"
   },
   {
     id: 4,
     page: "FAQ",
+    section: "faq"
   },
 ];
 
@@ -35,6 +40,12 @@ const DOC_BLOCK = [
 ];
 
 export function Footer() {
+  const router = useRouter();
+  const handleNavClick = (section: string) => {
+    router.push(`/?section=${section}`);
+  };
+
+
   return (
     <div className="px-[16px] md:px-[24px]">
       <div className="pt-[50px] md:grid-cols-2 md:gap-[16px] lg:mx-auto lg:grid lg:max-w-[1520px] lg:pt-[96px]">
@@ -67,7 +78,9 @@ export function Footer() {
 
             <ul className="flex flex-col gap-[16px] text-[14px] leading-[120%] tracking-[-0.04em] text-[#999999] lg:text-[18px]">
               {NAV_BLOCK.map((i) => (
-                <li key={i.id}>{i.page}</li>
+                <li key={i.id} onClick={() => handleNavClick(i.section)}>
+                  {i.page}
+                </li>
               ))}
             </ul>
           </div>
