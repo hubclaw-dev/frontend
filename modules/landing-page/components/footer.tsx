@@ -78,7 +78,7 @@ export function Footer() {
 
             <ul className="flex flex-col gap-[16px] text-[14px] leading-[120%] tracking-[-0.04em] text-[#999999] lg:text-[18px]">
               {NAV_BLOCK.map((i) => (
-                <li key={i.id} onClick={() => handleNavClick(i.section)}>
+                <li className="cursor-pointer" key={i.id} onClick={() => handleNavClick(i.section)}>
                   {i.page}
                 </li>
               ))}
