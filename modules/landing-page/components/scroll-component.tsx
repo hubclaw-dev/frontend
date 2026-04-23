@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useScrollToSection } from '@/shared/hooks/useScrollToSection';
+import { useScrollToSection } from "@/shared/hooks/useScrollToSection";
 
 export function ScrollToSection() {
   useScrollToSection();

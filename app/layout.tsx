@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import TanstackLayout from "@/shared/layouts/tanstack-layout";
 import "./globals.css";
 import "../firebase";
 
@@ -18,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <TanstackLayout>
+        <body>{children}</body>
+      </TanstackLayout>
     </html>
   );
 }

@@ -7,22 +7,22 @@ const NAV_BLOCK = [
   {
     id: 1,
     page: "Use Cases",
-    section: "use-cases"
+    section: "use-cases",
   },
   {
     id: 2,
     page: "How it works",
-    section: "how-it-works"
+    section: "how-it-works",
   },
   {
     id: 3,
     page: "Pricing",
-    section: "pricing"
+    section: "pricing",
   },
   {
     id: 4,
     page: "FAQ",
-    section: "faq"
+    section: "faq",
   },
 ];
 
@@ -44,7 +44,6 @@ export function Footer() {
   const handleNavClick = (section: string) => {
     router.push(`/?section=${section}`);
   };
-
 
   return (
     <div className="px-[16px] md:px-[24px]">
@@ -78,7 +77,11 @@ export function Footer() {
 
             <ul className="flex flex-col gap-[16px] text-[14px] leading-[120%] tracking-[-0.04em] text-[#999999] lg:text-[18px]">
               {NAV_BLOCK.map((i) => (
-                <li className="cursor-pointer" key={i.id} onClick={() => handleNavClick(i.section)}>
+                <li
+                  className="cursor-pointer"
+                  key={i.id}
+                  onClick={() => handleNavClick(i.section)}
+                >
                   {i.page}
                 </li>
               ))}

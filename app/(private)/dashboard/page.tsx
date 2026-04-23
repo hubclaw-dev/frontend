@@ -7,22 +7,22 @@ import { AnalyticsChart } from "@/shared/components/ui/Dashboard/AnalyticsChart"
 import { MetricsCards } from "@/shared/components/ui/Dashboard/MetricsCards/Index";
 import { Sidebar } from "@/shared/components/ui/Dashboard/Sidebar";
 import { Plus } from "lucide-react";
-
-const userInitial = {
-  uid: "1",
-  displayName: "Alex",
-  photoURL: null,
-  email: "test@mail.com",
-};
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function DashboardPage() {
-  const userState = useAuthStore((state) => state.user);
-  // const user = userState ?? userInitial;
-  console.log("userstate :: ", userState);
+  const user = useAuthStore((state) => state.user);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, [user, router]);
 
   return (
     <div className="flex min-h-screen bg-zinc-50">
-      <Sidebar user={userState} />
+      <Sidebar />
 
       <div className="flex-1 lg:ml-64">
         <header className="sticky top-0 z-40 border-b bg-zinc-50 px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-6">

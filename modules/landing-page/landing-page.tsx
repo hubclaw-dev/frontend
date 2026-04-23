@@ -13,7 +13,6 @@ import { ScrollToSection } from "./components/scroll-component";
 import { Suspense } from "react";
 
 export function LandingPage() {
-
   return (
     <div className="max-h-screen w-full overflow-x-hidden overscroll-x-none">
       <Suspense fallback={null}>

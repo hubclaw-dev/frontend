@@ -10,28 +10,28 @@
 
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
   },
 
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "hubclaw"
-    }
+      "service": "hubclaw",
+    },
   ],
 
   "images": {
-    "binding": "IMAGES"
+    "binding": "IMAGES",
   },
 
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
 
   "routes": [
     {
       "pattern": "www.hubclaw.io/*",
-      "zone_name": "hubclaw.io"
-    }
-  ]
+      "zone_name": "hubclaw.io",
+    },
+  ],
 }

@@ -12,7 +12,7 @@ export function TryFreeHeroSection(props: Props) {
   return (
     <div
       id={id}
-      className="3xl:my-[100px] 3xl:mt-[167px] lg:mt-[129px] mt-[90px] mb-[50px] grid grid-cols-1 px-[16px] md:mt-[130px] md:grid-cols-2 md:gap-[32px] md:px-[20px] lg:mx-auto lg:my-[64px] lg:max-w-[1520px]"
+      className="3xl:my-[100px] 3xl:mt-[167px] mt-[90px] mb-[50px] grid grid-cols-1 px-[16px] md:mt-[130px] md:grid-cols-2 md:gap-[32px] md:px-[20px] lg:mx-auto lg:my-[64px] lg:mt-[129px] lg:max-w-[1520px]"
     >
       <div className="grid-col block grid place-items-center md:place-items-start">
         <div className="3xl:mb-[64px] xs:gap-[8px] mb-[16px] flex gap-4 lg:mb-[24px]">

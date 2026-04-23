@@ -5,13 +5,16 @@ import {
   GoogleAuthProvider,
   signOut as firebaseSignOut,
   onAuthStateChanged,
-  User,
 } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth } from "@/firebase";
 import { useEffect, useState } from "react";
 import { useAuthStore } from "@/app/store/authStore";
 
 const googleProvider = new GoogleAuthProvider();
+
+googleProvider.setCustomParameters({
+  prompt: "select_account",
+});
 
 export function signInWithGoogle() {
   return signInWithPopup(auth, googleProvider);
@@ -22,7 +25,6 @@ export function signOut() {
 }
 
 export function useAuth() {
-  // const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const { user, setUser } = useAuthStore();
 
@@ -34,7 +36,7 @@ export function useAuth() {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [setUser]);
 
   return { user, loading };
 }

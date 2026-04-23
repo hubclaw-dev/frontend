@@ -22,29 +22,26 @@ import {
   Menu,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { User } from "firebase/auth";
+import { useAuthStore } from "@/app/store/authStore";
 
 interface SidebarProps {
   className?: string;
-  user: User | null;
 }
 
 interface NavProps {
   setOpen: (open: boolean) => void;
+  logOut: () => void;
   displayName: string | null;
   email: string | null;
   photoURL: string | null;
 }
 
 export function Sidebar(props: SidebarProps) {
-  const { className, user } = props;
-  const {
-    uid = "",
-    displayName = null,
-    email = null,
-    photoURL = null,
-  } = user ?? {};
+  const { className } = props;
   const [open, setOpen] = useState(false);
+  const logOut = useAuthStore((state) => state.logout);
+  const userState = useAuthStore((state) => state.user);
+  const { displayName = null, email = null, photoURL = null } = userState ?? {};
 
   return (
     <>
@@ -67,6 +64,7 @@ export function Sidebar(props: SidebarProps) {
             <div className="flex h-full flex-col text-white">
               <NavContent
                 setOpen={setOpen}
+                logOut={logOut}
                 displayName={displayName}
                 email={email}
                 photoURL={photoURL}
@@ -85,6 +83,7 @@ export function Sidebar(props: SidebarProps) {
       >
         <NavContent
           setOpen={setOpen}
+          logOut={logOut}
           displayName={displayName}
           email={email}
           photoURL={photoURL}
@@ -95,7 +94,7 @@ export function Sidebar(props: SidebarProps) {
 }
 
 function NavContent(props: NavProps) {
-  const { setOpen, displayName, email, photoURL } = props;
+  const { setOpen, displayName, email, photoURL, logOut } = props;
 
   return (
     <>
@@ -126,6 +125,14 @@ function NavContent(props: NavProps) {
         <Button variant="ghost" className="w-full justify-start">
           <Settings className="mr-2 h-4 w-4" />
           Account settings
+        </Button>
+        <Button
+          onClick={logOut}
+          variant="ghost"
+          className="w-full justify-start"
+        >
+          <Settings className="mr-2 h-4 w-4" />
+          LogOut
         </Button>
       </div>
 

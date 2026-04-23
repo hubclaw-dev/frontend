@@ -1,6 +1,7 @@
+import { signOut } from "@/shared/hooks/useAuth";
+import { User } from "firebase/auth";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { User } from "firebase/auth";
 
 interface AuthState {
   user: User | null;
@@ -24,12 +25,17 @@ export const useAuthStore = create<AuthState>()(
           isHydrated: true,
         }),
 
-      logout: () =>
+      logout: async () => {
+        await signOut();
+
+        useAuthStore.persist.clearStorage();
+
         set({
           user: null,
           isLoggedIn: false,
           isHydrated: true,
-        }),
+        });
+      },
     }),
     {
       name: "auth-storage",
